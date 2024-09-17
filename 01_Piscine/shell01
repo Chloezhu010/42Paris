@@ -6,3 +6,15 @@
 
 
 groups $FT_USER | tr ' ' ','
+
+# ex02
+// man find
+// find . is to fnd docs from the current directories
+// f: to find regular files
+// type for file type
+// basename: a utility used to extract the base file name from a given path. It removes the directory path, leaving only the final component of the file name. Additionally, it can also remove a specified suffix (such as a file extension) from the file name.
+
+
+find . -type f -name "*.sh" -exec basename {} .sh \;
+
+# ex03
