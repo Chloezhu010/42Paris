@@ -40,7 +40,13 @@ ifconfig -a | grep ether | awk '{print $2 "\n"}'
 file name: "\?$*'MaRViN'*$?\"
 
 // touch: to create file
-// \: to escape the double quote
+/* 
+    Double Quotes ("): Escaped as \" to include them in the filename.
+    Single Quotes ('): Escaped as \' to include them in the filename.
+    Dollar Sign ($): Escaped as \$ to prevent it from being interpreted as a variable.
+    Question Mark (?) and Asterisk (*): Escaped as \? and \* to prevent filename expansion.
+    Backslash (\): Use \\ to represent a single backslash.
+*/
 
 touch \"\\\?\$\*'MaRViN'\*\$\?\\\"
 
