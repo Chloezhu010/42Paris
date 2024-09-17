@@ -1,1 +1,8 @@
+# ex01
+// use groups to list the user, groups $FT_USER only display the list, need to use ',' to separate
+// groups - print the groups a user is in
+// use tr to replace ' ' with ','
+// tr - translate or delete characters
 
+
+groups $FT_USER | tr ' ' ','
