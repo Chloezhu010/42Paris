@@ -48,5 +48,7 @@ file name: "\?$*'MaRViN'*$?\"
     Backslash (\): Use \\ to represent a single backslash.
 */
 
-touch \"\\\?\$\*'MaRViN'\*\$\?\\\"
+touch \"\\\?\$\*\'MaRViN\'\*\$\?\\\"
+echo 42 > <filename>
+truncate -s 2 <filename>
 
