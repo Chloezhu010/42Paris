@@ -6,3 +6,17 @@ gcc -Wall -Wextra -Werror <filename>
 -Wall: Enables all the basic warning messages. It helps in identifying potential issues in your code.
 -Wextra: Enables additional warning messages that are not included with -Wall. This provides further insights into possible problems.
 -Werror: Treats all warnings as errors. This means that if there are any warnings, the compilation will fail, forcing you to address them before proceeding.
+
+# Void
+
+Basically it means "nothing" or "no type"
+
+There are 3 basic ways that void is used:
+
+    - Function argument: int myFunc(void) -- the function takes nothing.
+
+    - Function return value: void myFunc(int) -- the function returns nothing
+
+    - Generic data pointer: void* data -- 'data' is a pointer to data of unknown type, and cannot be dereferenced
+
+Note: the void in a function argument is optional in C++, so int myFunc() is exactly the same as int myFunc(void), and it is left out completely in C#. It is always required for a return value.
