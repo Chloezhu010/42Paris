@@ -40,13 +40,122 @@ void ft_putchar(char c) {
     write(1, &c, 1);
 }
 
-error on main??
 
 # ex01
+ascii: low key alphabet, from 97 to 122
 
+#include <unistd.h>
+
+void ft_print_alphabet(void) {
+    char i;
+    i = 97;
+    while (i < 123){
+        write(1, &i, 1);
+        i++;
+    }
+}
 
 
 # ex02
+similar to ex01, but reverse
+
+#include <unistd.h>
+
+void ft_print_reverse_alphabet(void) {
+    char i;
+    i = 122;
+    while (i > 96){
+        write(1, &i, 1);
+        i --;
+    }
+}
+
+int main(void){
+    ft_print_reverse_alphabet();
+}
+
+# ex03
+#include <unistd.h>
+
+void ft_print_numbers(void) {
+    char i;
+    i = 48;
+    while (i < 58) {
+        write(1, &i, 1);
+        i ++;
+    }
+}
+
+int main(void){
+    ft_print_numbers();
+}
+
+# ex04
+#include <unistd.h>
+
+void ft_is_negative(int n){
+    if (n >= 0) {
+        write(1, "P", 1);
+    } else {
+        write(1, "N", 1);
+    }
+
+}
+
+int main(void){
+    ft_is_negative(5);
+    ft_is_negative(0);
+    ft_is_negative(-5);
+}
+
+
+# ex05
+#include <unistd.h>
+
+void ft_putchar(char c) {
+    write(1, &c, 1);
+}
+
+void ft_print_comb(void) {
+    int a;
+    int b;
+    int c;
+
+    a = '0';
+    while (a <= '7'){
+        b = a + 1;
+        while (b <= '8'){
+            c = b + 1;
+            while (c <= '9'){
+                ft_putchar(a);
+                ft_putchar(b);
+                ft_putchar(c);
+                if (a != '7'){
+                    write(1, ", ", 2);
+                }
+                c++;
+            }
+        b++;
+        }
+    a++;
+    }
+}
+
+int main(void){
+    ft_print_comb();
+}
+
+# ex06
+#include <unistd.h>
+
+void ft_putchar(char c) {
+    write(1, &c, 1);
+}
+
+void ft_print_comb2(void) {
+
+}
+
 
 
 
