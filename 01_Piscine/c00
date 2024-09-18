@@ -1,1 +1,4 @@
-
+# Compile
+-Wall: Enables all the basic warning messages. It helps in identifying potential issues in your code.
+-Wextra: Enables additional warning messages that are not included with -Wall. This provides further insights into possible problems.
+-Werror: Treats all warnings as errors. This means that if there are any warnings, the compilation will fail, forcing you to address them before proceeding.
