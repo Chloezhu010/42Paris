@@ -1,3 +1,7 @@
+check:
+
+gcc -Wall -Wextra -Werror <filename>
+
 # Compile
 -Wall: Enables all the basic warning messages. It helps in identifying potential issues in your code.
 -Wextra: Enables additional warning messages that are not included with -Wall. This provides further insights into possible problems.
