@@ -24,6 +24,8 @@ int main(void){
 
 # ex05
 
+gcc -Wall -Wextra -Werror
+
 
 https://github.com/pasqualerossi/42-Piscine/blob/main/C00%20-%20C07%20Piscine%20Projects/c01/README.md
 https://github.com/kev-ye/42/blob/master/42_Piscine/C_00/ex06/ft_print_comb2.c
