@@ -5,7 +5,7 @@
 // tr - translate or delete characters
 
 
-id -Gn $FT_USER | tr ' ' ','
+id -Gn $FT_USER | tr ' ' ',' | tr -d '\n'
 
 # ex02
 // man find
