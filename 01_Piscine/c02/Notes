@@ -95,31 +95,60 @@ int     main(void)
 
 # ex02
 - code 
-#include <unistd.h>
-int     fr_str_is_alpha(char *str)
-{
-       int i;
+       int ft_str_is_alpha(char *str)
+  14   │ {
+  15   │     int i;
+  16   │ 
+  17   │     i = 0;
+  18   │     while (str[i] != '\0')
+  19   │     {
+  20   │         if ((str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z'))
+  21   │         {
+  22   │             return (0);
+  23   │         }
+  24   │         i++;
+  25   │     }
+  26   │     return (1);
+  27   │ }
+  28   │ /*
+  29   │ #include <stdio.h>
+  30   │ int main(void)
+  31   │ {
+  32   │     printf("%d\n", ft_str_is_alpha("abdABCEd"));
+  33   │     printf("%d\n", ft_str_is_alpha("abxdsef5"));
+  34   │     printf("%d\n", ft_str_is_alpha(""));
+  35   │ }*/
 
-       i = 0;
-       while (str[i] != '\0')
-       {
-              if (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z')
-              {
-                     return (0);
-              }
-              i++;
-       }
-       return (1);
-}
+# ex03
+        int ft_str_is_numeric(char *str)
+  14   │ {
+  15   │     int i;
+  16   │ 
+  17   │     i = 0;
+  18   │     while (str[i] != '\0')
+  19   │     {
+  20   │         if (str[i] < '0' || str[i] > '9')
+  21   │         {
+  22   │             return (0);
+  23   │         }
+  24   │         i++;
+  25   │     }
+  26   │     return (1);
+  27   │ }
+  28   │ /*
+  29   │ #include <stdio.h>
+  30   │ int main(void)
+  31   │ {
+  32   │     printf("%d\n", ft_str_is_numeric("12334236"));
+  33   │     printf("%d\n", ft_str_is_numeric("1235563a"));
+  34   │     printf("%d\n", ft_str_is_numeric(""));
+  35   │ }*/
 
-#include <stdio.h>
-int     main(void)
-{
-        ft_str_is_alpha("abdAcBC");
-        ft_str_is_alpha("agceq1");
-        ft_str_is_alpha("");
-}
 
+# ex04
+
+
+# ex07
 
 
 
