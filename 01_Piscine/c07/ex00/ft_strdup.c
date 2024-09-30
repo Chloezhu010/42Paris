@@ -32,9 +32,3 @@ int	main(void)
 	printf("%s; %s\n", target, target2);	
 }
 
-/*
-- malloc allocate size bytes of memory, then return a pointer to the alloc memory
-- (cast-type*) malloc(byte-size)
-https://www.codequoi.com/en/malloc-allocating-memory-in-c/#:~:text=To%20malloc%20a%20string%20of,char%20for%20the%20final%20%5C0%20.
-
-*/
