@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 17:45:52 by czhu              #+#    #+#             */
-/*   Updated: 2024/10/01 18:28:54 by czhu             ###   ########.fr       */
+/*   Created: 2024/10/01 14:54:29 by czhu              #+#    #+#             */
+/*   Updated: 2024/10/01 17:42:37 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*ft_fill(int size, char **strs, char *sep, char *ptr)
 		if (i < size - 1)
 		{
 			ft_strcpy(ptr, sep);
-			ptr += ft_strlen(seip);
+			ptr += ft_strlen(sep);
 		}
 		i++;
 	}
@@ -80,14 +80,14 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int	total_len;
 	char	*result;
 	char	*ptr;
-
-	total_len = ft_total_len(size, strs, sep);
+	
 	if (size == 0)
 	{
 		result = (char*)malloc(1);
 		return (result);
 	}
-	result = (char*)malloc(sizeof(char) * (total_len + 1));
+	total_len = ft_total_len(size, strs, sep);
+	result = (char*)malloc(sizeof(char)*(total_len + 1));
 	if (!result)
 		return (0);
 	ptr = result;
@@ -95,15 +95,50 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	return (result);
 }
 
+/*
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	int	i;
+	int	total_len;
+	char	*result;
+	char	*ptr;
+
+	if (size == 0)
+	{
+		result = (char*) malloc(1);
+		return (result);
+	}
+	total_len = ft_total_len(size, strs, sep);
+	result = (char*) malloc(sizeof(char)*(total_len + 1));
+	if (!result)
+		return (0);
+	ptr = result;
+	i = 0;
+	while (i < size)
+	{
+		ft_strcpy(ptr, strs[i]);
+		ptr += ft_strlen(strs[i]);
+		if (i < size - 1)
+		{
+			ft_strcpy(ptr, sep);
+			ptr += ft_strlen(sep);
+		}
+		i++;
+	}
+	ptr[i] = '\0';
+	return (result);
+}*/
+
 #include <stdio.h>
+
 int	main(void)
 {
 	char *strs[5];
-        strs[0] = "bonjour";
-        strs[1] = "ici";
-        strs[2] = "c'est";
-        strs[3] = "42";
-        strs[4] = "!";
+	strs[0] = "bonjour";
+	strs[1] = "ici";
+	strs[2] = "c'est";
+	strs[3] = "42";
+	strs[4] = "!";
 
-        printf("%s\n", ft_strjoin(5, strs, "**"));
+	printf("%s\n", ft_strjoin(5, strs, "**"));
 }
