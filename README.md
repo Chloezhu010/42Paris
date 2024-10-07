@@ -1,4 +1,4 @@
-# 42Paris
+# 42Paris Piscine
 ## C00
 - ft_putchar
 - ft_print_alphabet
