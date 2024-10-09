@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/28 18:31:26 by czhu              #+#    #+#             */
+/*   Updated: 2024/09/28 18:36:26 by czhu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 int	ft_iterative_power(int nb, int power)
 {
 	int	result;
 	int	i;
-	
+
 	result = nb;
 	if (power < 0)
 		return (0);
@@ -15,9 +27,8 @@ int	ft_iterative_power(int nb, int power)
 		i++;
 	}
 	return (result);
-	
 }
-
+/*
 #include <stdio.h>
 
 int	main(void)
@@ -29,4 +40,4 @@ int	main(void)
 	printf("10:%d\n", ft_iterative_power(10, 1));
 	printf("100:%d\n", ft_iterative_power(10, 2));
 	printf("216:%d\n", ft_iterative_power(6, 3));	
-}
+}*/

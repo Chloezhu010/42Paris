@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/28 18:33:00 by czhu              #+#    #+#             */
+/*   Updated: 2024/09/30 18:42:22 by czhu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 int	ft_is_prime(int nb)
 {
 	int	i;
@@ -5,20 +17,26 @@ int	ft_is_prime(int nb)
 	i = 2;
 	if (nb <= 1)
 		return (0);
-	while (i < nb)
+	else if (nb == 2)
+		return (1);
+	else if (nb % 2 == 0)
+		return (0);
+	else
 	{
-		if (nb % i == 0)
-			return (0);
-		i++;
+		while (i <= nb / i)
+		{
+			if (nb % i == 0)
+				return (0);
+			i++;
+		}
+		return (1);
 	}
-	return (1);
 }
-
+/*
 #include <stdio.h>
 
 int	main(void)
 {
-	printf("%d\n", ft_is_prime(5));
 	printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
 		ft_is_prime(-1) == 0 ? "OK" : "Fail",
 		ft_is_prime(-3) == 0 ? "OK" : "Fail",
@@ -33,8 +51,7 @@ int	main(void)
 		ft_is_prime(10) == 0 ? "OK" : "Fail",
 		ft_is_prime(11) == 1 ? "OK" : "Fail",
 		ft_is_prime(13) == 1 ? "OK" : "Fail",
-		ft_is_prime(19) == 1 ? "OK" : "Fail",
-		ft_is_prime(20) == 0 ? "OK" : "Fail"
-		  );
-	
-}
+		ft_is_prime(27) == 0 ? "OK" : "Fail",
+		ft_is_prime(2147483647) == 1 ? "OK" : "Fail"
+		  );	
+}*/

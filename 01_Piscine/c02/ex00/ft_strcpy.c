@@ -1,22 +1,25 @@
-char *ft_strcpy(char *dest, char *src)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/22 12:53:38 by czhu              #+#    #+#             */
+/*   Updated: 2024/09/26 12:49:46 by czhu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;
 
 	i = 0;
-	while (src[i])
+	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
 		i++;
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-#include <stdio.h>
-int	main(void)
-{
-	char src[] = "42borntocodecode code code code code hello hello hello code code code code code code code code code code code code code code code code code code";
-	char dest[] = "";
-
-	printf("%s\n", ft_strcpy(dest, src));
 }

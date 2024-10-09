@@ -1,14 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_params.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/29 12:58:44 by czhu              #+#    #+#             */
+/*   Updated: 2024/09/30 11:00:27 by czhu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_putstr(char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
+	while (*str)
 	{
-		write(1, &str[i], 1);
-		i++;
+		write(1, str++, 1);
 	}
 }
 
@@ -18,13 +26,14 @@ int	ft_strcmp(char *s1, char *s2)
 
 	i = 0;
 	while ((s1[i] || s2[i]) && (s1[i] == s2[i]))
-		i++;	
+		i++;
 	return (s1[i] - s2[i]);
 }
 
 void	ft_sort_str(char **s1, char **s2)
 {
 	char	*temp;
+
 	if (ft_strcmp(*s1, *s2) > 0)
 	{
 		temp = *s1;

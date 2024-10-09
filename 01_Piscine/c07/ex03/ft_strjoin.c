@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 10:05:01 by czhu              #+#    #+#             */
+/*   Updated: 2024/10/02 18:39:29 by czhu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -33,7 +45,7 @@ int	ft_total_len(int size, char **strs, char *sep)
 {
 	int	i;
 	int	total_len;
-    int	sep_len;
+	int	sep_len;
 
 	i = 0;
 	total_len = 0;
@@ -43,38 +55,38 @@ int	ft_total_len(int size, char **strs, char *sep)
 		total_len += ft_strlen(strs[i]);
 		if (i < size - 1)
 			total_len += sep_len;
-        i++;
+		i++;
 	}
 	return (total_len);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	int	i;
-	int	total_len;
-	char	*result;
+	int		i;
+	int		total_len;
+	char	*res;
 
-    if (size == 0)
-    {
-        result = (char*)malloc(sizeof(char));
-        result[0] = '\0';
-        return (result);
-    }
-    total_len = ft_total_len(size, strs, sep);
-    result = (char*)malloc(sizeof(char) * (total_len + 1));
-    if (!result)
-        return (0);
-    result[0] = '\0';
-    i = -1;
-    while (++i < size)
-    {
-        ft_strcat(result, strs[i]);
-        if (i < size - 1)
-            ft_strcat(result, sep);
-    }
-    return (result);
+	if (size == 0)
+	{
+		res = malloc(sizeof(char));
+		res[0] = '\0';
+		return (res);
+	}
+	total_len = ft_total_len(size, strs, sep);
+	res = malloc(sizeof(char) * (total_len + 1));
+	if (!res)
+		return (NULL);
+	res[0] = '\0';
+	i = -1;
+	while (++i < size)
+	{
+		ft_strcat(res, strs[i]);
+		if (i < size - 1)
+			ft_strcat(res, sep);
+	}
+	return (res);
 }
-
+/*
 #include <stdio.h>
 
 int main()
@@ -86,4 +98,4 @@ int main()
     printf("%s\n", result);
     free(result);
     return (0);
-}
+}*/
