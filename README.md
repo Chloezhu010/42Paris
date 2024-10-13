@@ -1,11 +1,9 @@
-# 42Paris Piscine
+# 42 Paris
+## Piscine
 <details>
 <summary>Click to expand</summary>
 
-Your content goes here. You can include Markdown-formatted text, lists, or code.
-
-</details>
-## C00
+### C00 (print)
 - ft_putchar
 - ft_print_alphabet
 - ft_print_reverse_alphabet
@@ -16,7 +14,7 @@ Your content goes here. You can include Markdown-formatted text, lists, or code.
 - ft_putnbr
 - ft_print_combn
 
-## C01
+### C01 (pointer)
 - ft_ft
 - ft_ultimate_ft
 - ft_swap
@@ -27,7 +25,7 @@ Your content goes here. You can include Markdown-formatted text, lists, or code.
 - ft_rev_int_tab
 - ft_sort_int_tab
 
-## C02
+### C02 (ascii)
 - ft_strcpy
 - ft_strncpy
 - ft_str_is_alpha
@@ -42,7 +40,7 @@ Your content goes here. You can include Markdown-formatted text, lists, or code.
 - ft_putstr_non_printable
 - ft_print_memory
 
-## C03
+### C03 (string)
 - ft_strcmp
 - ft_strncmp
 - ft_strcat
@@ -50,7 +48,7 @@ Your content goes here. You can include Markdown-formatted text, lists, or code.
 - ft_strstr
 - ft_strlcat
 
-## C04
+### C04 (char <> nbr convert)
 - ft_strlen
 - ft_putstr
 - ft_putnbr
@@ -58,7 +56,7 @@ Your content goes here. You can include Markdown-formatted text, lists, or code.
 - ft_putnbr_base
 - ft_atoi_base
 
-## C05
+### C05 (maths)
 - ft_iterative_factorial
 - ft_recursive_factorial
 - ft_iterative_power
@@ -69,16 +67,26 @@ Your content goes here. You can include Markdown-formatted text, lists, or code.
 - ft_find_next_prime
 - ft_ten_queens_puzzle
 
-## C06
+### C06 (argc, argv)
 - ft_print_program_name
 - ft_print_params
 - ft_rev_params
 - ft_sort_params
 
-## C07
+### C07 (malloc)
 - ft_strdup
 - ft_range
 - ft_ultimate_range
 - ft_strjoin
 - ft_convert_base
 - ft_split
+
+### C08 (header file)
+- ft.h
+- ft_boolean.h
+- ft_abs.h
+- ft_point.h
+- ft_strs_to_tab
+- ft_show_tab
+
+</details>
