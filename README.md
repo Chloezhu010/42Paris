@@ -1,4 +1,10 @@
 # 42Paris Piscine
+<details>
+<summary>Click to expand</summary>
+
+Your content goes here. You can include Markdown-formatted text, lists, or code.
+
+</details>
 ## C00
 - ft_putchar
 - ft_print_alphabet
