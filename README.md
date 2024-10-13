@@ -1,7 +1,27 @@
 # 42 Paris
 ## Piscine
 <details>
-<summary>Click to expand</summary>
+<summary>Shell & C00 - C08</summary>
+
+### Shell00
+- echo
+- file attributes
+- SSH key
+- midLS
+- git commit
+- gitignore
+- diff
+- clean
+
+### Shell01
+- print_groups
+- find_sh
+- count_files
+- MAC
+- create file name with \/"?*
+- skip
+- r_dwssap
+- add_chelou
 
 ### C00 (print)
 - ft_putchar
