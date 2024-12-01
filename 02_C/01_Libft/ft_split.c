@@ -6,7 +6,7 @@
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:18:21 by czhu              #+#    #+#             */
-/*   Updated: 2024/11/29 12:20:35 by czhu             ###   ########.fr       */
+/*   Updated: 2024/11/30 11:57:14 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,16 @@ char	*ft_strcpy(char *dest, const char *src, char c)
 	return (dest);
 }
 
+void	ft_freeup(char *s)
+{
+	while (*s)
+	{
+		free(s);
+		s++;
+	}
+	free(s);
+}
+
 void	ft_putsplit(char **split, const char *s, char c)
 {
 	int	i;
@@ -68,27 +78,14 @@ void	ft_putsplit(char **split, const char *s, char c)
 			while (s[i + j] && s[i + j] != c)
 				j++;
 			split[count_str] = malloc(sizeof(char) * (j + 1));
+			if (split[count_str] == NULL)
+				ft_freeup(split[count_str]);
 			ft_strcpy(split[count_str], s + i, c);
-			split[count_str][j] = '\0';
 			i = i + j;
 			count_str++;
 		}
 	}
-}
-
-void	ft_free_split(char **split)
-{
-	int	i;
-
-	i = 0;
-	if (!split)
-		return ;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
+	split[count_str] = NULL;
 }
 
 char	**ft_split(char const *s, char c)
@@ -106,7 +103,6 @@ char	**ft_split(char const *s, char c)
 	ft_putsplit(res, s, c);
 	res[count] = NULL;
 	return (res);
-	ft_free_split(res);
 }
 /*
 #include <stdio.h>
