@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	check_space(const char *s)
+static int	check_space(const char *s)
 {
 	while (*s)
 	{
@@ -49,7 +49,7 @@ int	ft_atoi(const char *nptr)
 		return (0);
 	return (result);
 }
-/*
+
 #include <stdio.h>
 #include <stdlib.h>
 int	main()
@@ -67,4 +67,4 @@ int	main()
 	printf("%d: %d\n", atoi(str4), ft_atoi(str4));
 	printf("%d: %d\n", atoi(str5), ft_atoi(str5));
 	printf("%d: %d\n", atoi(str6), ft_atoi(str6));
-}*/
+}

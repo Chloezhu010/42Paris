@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int	check_negative(long n)
+static int	check_negative(long n)
 {
 	if (n >= 0)
 		return (0);
@@ -21,14 +21,14 @@ int	check_negative(long n)
 		return (1);
 }
 
-int	count_digit(long n)
+static int	count_digit(long n)
 {
 	int	count;
 
 	count = 0;
 	if (check_negative(n) == 1)
 		n = -n;
-	while (n / 10 > 1)
+	while (n / 10 >= 1)
 	{
 		count++;
 		n = n / 10;
@@ -36,16 +36,14 @@ int	count_digit(long n)
 	return (count + 1);
 }
 
-long	ft_abs(long n)
+static long	ft_abs(long n)
 {
 	if (check_negative(n) == 1)
 		n = -n;
-	else
-		n = n;
 	return (n);
 }
 
-char	*ft_zero(long n)
+static char	*ft_zero(long n)
 {
 	char	*res;
 
@@ -88,7 +86,7 @@ char	*ft_itoa(int n)
 		res[0] = '-';
 	return (res);
 }
-/*
+
 #include <stdio.h>
 int	main()
 {
@@ -96,14 +94,17 @@ int	main()
 	int	n2 = 0;
 	int	n3 = 2147483647;
 	int	n4 = -2147483648;
+	int	n5 = -10;
 	
 	printf("count: %d\n", count_digit(n1));
 	printf("count: %d\n", count_digit(n2));
 	printf("count: %d\n", count_digit(n3));
 	printf("count: %d\n", count_digit(n4));
+	printf("count: %d\n", count_digit(n5));
 
 	printf("%s\n", ft_itoa(n1));
 	printf("%s\n", ft_itoa(n2));
 	printf("%s\n", ft_itoa(n3));
 	printf("%s\n", ft_itoa(n4));
-}*/
+	printf("%s\n", ft_itoa(n5));
+}
