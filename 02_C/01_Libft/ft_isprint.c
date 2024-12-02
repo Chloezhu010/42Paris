@@ -6,7 +6,7 @@
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:58:37 by czhu              #+#    #+#             */
-/*   Updated: 2024/11/25 13:03:20 by czhu             ###   ########.fr       */
+/*   Updated: 2024/12/02 14:45:25 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 int	ft_isprint(int c)
 {
-	return (c >= 20 && c <= 126);
+	return (c >= 32 && c <= 126);
 }
 /*
 #include <stdio.h>
 int	main()
 {
-	int	c = '{';
-	printf("%d\n", ft_isprint(c));
+	int	i = 0;
+	while (i <= 47)
+	{
+		printf("%d",ft_isprint(i));
+		i++;
+	}
 }*/
