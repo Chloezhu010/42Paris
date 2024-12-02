@@ -24,7 +24,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (len_s == 0)
 		return (NULL);
 	ptr = malloc(len + 1);
-	if (ptr == NULL)
+	if (!ptr)
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -37,15 +37,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		}
 		i++;
 	}
+	ptr[j] = '\0';
 	return (ptr);
 }
 /*
 #include <stdio.h>
 int	main()
 {
-	char	s[] = "hello, world!";
-	unsigned int	start = 5;
-	size_t	len = 6;
+	char	s[] = "Lorem ipsum dolor sit amet";
+	unsigned int	start = 7;
+	size_t	len = 10;
 
 	printf("%s\n", ft_substr(s, start, len));
 }*/
