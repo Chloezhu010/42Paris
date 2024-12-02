@@ -14,17 +14,26 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	little_len;
+	size_t	i;
+	size_t	j;
 
-	little_len = ft_strlen(little);
-	if (little_len == 0)
+	i = 0;
+	j = 0;	
+	if (!*little)
 		return ((char *)big);
-	while (*big && little_len <= len)
+	while (big[i] && i < len)
 	{
-		if (ft_strncmp(big, little, little_len) == 0)
-			return ((char *)big);
-		big++;
-		len--;
+		if (big[i] == little[j])
+		{
+			while (big[i + j] == little [j] && (i + j) < len)
+			{
+				if (little[j + 1] == '\0')
+						return ((char *)big + i);
+				j++;
+			}
+			j = 0;
+		}
+		i++;
 	}
 	return (NULL);
 }
@@ -33,9 +42,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 #include <string.h>
 int	main()
 {
-	const char *big = "hello, world";
-	const char *little = "world";
-	char *ptr = ft_strnstr(big, little, 7);
+	const char *big = "lorem ipsum dolor sit amet";
+	const char *little = "dol";
+	char *ptr = ft_strnstr(big, little, 30);
 
 	if (ptr != NULL)
 		printf("first occurrence: %s\n", ptr);
