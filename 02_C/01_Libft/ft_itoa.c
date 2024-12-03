@@ -24,69 +24,49 @@ static int	check_negative(long n)
 static int	count_digit(long n)
 {
 	int	count;
+	int	negative;
 
 	count = 0;
-	if (check_negative(n) == 1)
+	negative = check_negative(n);
+	if (negative == 1)
 		n = -n;
 	while (n / 10 >= 1)
 	{
 		count++;
 		n = n / 10;
 	}
-	return (count + 1);
-}
-
-static long	ft_abs(long n)
-{
-	if (check_negative(n) == 1)
-		n = -n;
-	return (n);
-}
-
-static char	*ft_zero(long n)
-{
-	char	*res;
-
-	res = malloc(2);
-	if (!res)
-		return (NULL);
-	if (n == 0)
-	{
-		res[0] = '0';
-		res[1] = '\0';
-	}
-	else
-		return (NULL);
-	return (res);
+	return (count + 1 + negative);
 }
 
 char	*ft_itoa(int n)
 {
 	long	num;
 	char	*res;
-	int		i;
-	int		negative;
+	int		len;
 
 	num = (long)n;
-	negative = check_negative(num);
-	res = malloc (count_digit(num) + negative + 1);
+	len = count_digit(num);
+	res = malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
-	if (num == 0)
-		res = ft_zero(num);
-	num = ft_abs(num);
-	i = count_digit(num) + negative - 1;
-	res[count_digit(num) + negative] = '\0';
-	while (num > 0)
+	res[len] = '\0';
+	if (num < 0)
 	{
-		res[i--] = num % 10 + '0';
-		num /= 10;
-	}
-	if (negative)
 		res[0] = '-';
+		num = -num;
+	}
+	else if (num == 0)
+		res[0] = '0';
+	res[len + 1] = '\0';
+	while (num != 0)
+	{
+		res[len - 1] = num % 10 + '0';
+		num /= 10;
+		len--;
+	}
 	return (res);
 }
-
+/*
 #include <stdio.h>
 int	main()
 {
@@ -95,16 +75,22 @@ int	main()
 	int	n3 = 2147483647;
 	int	n4 = -2147483648;
 	int	n5 = -10;
+	int	n6 = -100;
+	int	n7 = 300;
 	
 	printf("count: %d\n", count_digit(n1));
 	printf("count: %d\n", count_digit(n2));
 	printf("count: %d\n", count_digit(n3));
 	printf("count: %d\n", count_digit(n4));
 	printf("count: %d\n", count_digit(n5));
+	printf("count: %d\n", count_digit(n6));
+	printf("count: %d\n", count_digit(n7));
 
 	printf("%s\n", ft_itoa(n1));
 	printf("%s\n", ft_itoa(n2));
 	printf("%s\n", ft_itoa(n3));
 	printf("%s\n", ft_itoa(n4));
 	printf("%s\n", ft_itoa(n5));
-}
+	printf("%s\n", ft_itoa(n6));
+	printf("%s\n", ft_itoa(n7));
+}*/
