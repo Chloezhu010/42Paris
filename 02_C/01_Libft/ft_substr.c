@@ -16,14 +16,12 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ptr;
-	size_t	len_s;
 	size_t	i;
 	size_t	j;
 
-	len_s = ft_strlen(s);
-	if (len_s == 0)
+	if (!s)
 		return (NULL);
-	ptr = malloc(len + 1);
+	ptr = malloc(sizeof(*s) * (len + 1));
 	if (!ptr)
 		return (NULL);
 	i = 0;
@@ -40,13 +38,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ptr[j] = '\0';
 	return (ptr);
 }
-/*
+
 #include <stdio.h>
+#include <string.h>
 int	main()
 {
-	char	s[] = "Lorem ipsum dolor sit amet";
-	unsigned int	start = 7;
-	size_t	len = 10;
-
-	printf("%s\n", ft_substr(s, start, len));
-}*/
+	printf("%s\n", ft_substr("tripouille", 0, 42000));
+	printf("%s\n", ft_substr("tripouille", 1, 1));
+	printf("%s\n", ft_substr("tripouille", 100, 1));
+	printf("%s\n", ft_substr("tripouille", 0, 0));
+}
