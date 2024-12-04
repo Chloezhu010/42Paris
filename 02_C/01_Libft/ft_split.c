@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int	count_word(const char *s, char c)
+static int	count_word(const char *s, char c)
 {
 	int	i;
 	int	in_word;
@@ -36,34 +36,38 @@ int	count_word(const char *s, char c)
 	return (count);
 }
 
-char	*ft_strcpy(char *dest, const char *src, char c)
+void	ft_freeup(char **str)
 {
 	int	i;
 
-	i = 0;
-	while (src[i] && src[i] != c)
+	i = 0;	
+	while (str[i])
 	{
-		dest[i] = src[i];
+		free(str[i]);
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	free(str);
 }
 
-void	ft_freeup(char *s)
+static char	*ft_alloc_word(const char *s, char c, int *i)
 {
-	while (*s)
-	{
-		free(s);
-		s++;
-	}
-	free(s);
+	int		j;
+	char	*word;
+
+	j = 0;
+	while (s[*i + j] && s[*i + j] != c)
+		j++;
+	word = malloc(sizeof(char) * (j + 1));
+	if (!word)
+		return (NULL);
+	ft_strlcpy(word, s + *i, j + 1);
+	*i += j;
+	return (word);
 }
 
-void	ft_putsplit(char **split, const char *s, char c)
+static int	ft_putsplit(char **split, const char *s, char c)
 {
 	int	i;
-	int	j;
 	int	count_str;
 
 	count_str = 0;
@@ -74,18 +78,17 @@ void	ft_putsplit(char **split, const char *s, char c)
 			i++;
 		else
 		{
-			j = 0;
-			while (s[i + j] && s[i + j] != c)
-				j++;
-			split[count_str] = malloc(sizeof(char) * (j + 1));
+			split[count_str] = ft_alloc_word(s, c, &i);
 			if (split[count_str] == NULL)
-				ft_freeup(split[count_str]);
-			ft_strcpy(split[count_str], s + i, c);
-			i = i + j;
+			{
+				ft_freeup(split);
+				return (0);
+			}
 			count_str++;
 		}
 	}
 	split[count_str] = NULL;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -100,11 +103,15 @@ char	**ft_split(char const *s, char c)
 	if (!res)
 		return (NULL);
 	res[count] = 0;
-	ft_putsplit(res, s, c);
+	if (ft_putsplit(res, s, c) == 0)
+	{
+		free(res);
+		return (NULL);
+	}
 	res[count] = NULL;
 	return (res);
 }
-/*
+
 #include <stdio.h>
 int	main()
 {
@@ -112,10 +119,8 @@ int	main()
 	char c = '*';
 	char **split_str = ft_split(s, c);
 	int count = count_word(s, c);
-	char dest[] = "";
 
 	printf("test count word: %d\n", count);
-	printf("test strcpy: %s\n", ft_strcpy(dest, s, c));
 	
 	int i = 0;
 
@@ -124,4 +129,5 @@ int	main()
 		printf("result: %s\n", split_str[i]);
 		i++;
 	}
-}*/
+	ft_freeup(split_str);
+}

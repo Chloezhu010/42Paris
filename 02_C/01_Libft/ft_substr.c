@@ -38,13 +38,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ptr[j] = '\0';
 	return (ptr);
 }
-
-#include <stdio.h>
-#include <string.h>
-int	main()
-{
-	printf("%s\n", ft_substr("tripouille", 0, 42000));
-	printf("%s\n", ft_substr("tripouille", 1, 1));
-	printf("%s\n", ft_substr("tripouille", 100, 1));
-	printf("%s\n", ft_substr("tripouille", 0, 0));
-}
+// #include <stdio.h>
+// #include <string.h>
+// int	main()
+// {
+// 	printf("%s\n", ft_substr("tripouille", 0, 42000));
+// 	printf("%s\n", ft_substr("tripouille", 1, 1));
+// 	printf("%s\n", ft_substr("tripouille", 100, 1));
+// 	printf("%s\n", ft_substr("tripouille", 0, 0));
+// }
