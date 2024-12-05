@@ -6,7 +6,7 @@
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:46:13 by czhu              #+#    #+#             */
-/*   Updated: 2024/12/02 15:41:51 by czhu             ###   ########.fr       */
+/*   Updated: 2024/12/03 13:07:35 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 
 	ptr1 = s1;
 	ptr2 = s2;
+	if (n == 0)
+		return (0);
 	while (n - 1 > 0 && (*ptr1 == *ptr2))
 	{
 		ptr1++;
 		ptr2++;
 		n--;
 	}
-	if (n == 0)
-		return (0);
 	return (*ptr1 - *ptr2);
 }
 /*
@@ -42,8 +42,8 @@ int	main()
 	printf("new: %d\n", ft_memcmp(data1, data2, 5 * sizeof(int)));
 	printf("new: %d\n", ft_memcmp(data1, data2, 4 * sizeof(int)));
 
-	char	*s1 = "zyxbc";
-	char	*s2 = "abced";
+	char	*s1 = "test";
+	char	*s2 = "test";
 
 	printf("old: %d\n", memcmp(s1, s2, 0));
 	printf("new: %d\n", ft_memcmp(s1, s2, 0));

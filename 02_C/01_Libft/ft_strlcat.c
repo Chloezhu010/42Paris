@@ -6,7 +6,7 @@
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:18:21 by czhu              #+#    #+#             */
-/*   Updated: 2024/11/26 16:03:16 by czhu             ###   ########.fr       */
+/*   Updated: 2024/12/03 15:38:04 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,21 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t siz)
 {
-	size_t	src_len;
-	size_t	dst_len;
-	size_t	copy_len;
 	size_t	i;
+	size_t	j;
 
 	i = 0;
-	src_len = ft_strlen(src);
-	dst_len = ft_strlen(dst);
-	if (dst_len >= siz)
-		return (src_len + siz);
-	copy_len = siz - dst_len - 1;
-	while (i < copy_len)
-	{
-		dst[dst_len + i] = src[i];
+	j = 0;
+	while (dst[i] && i < siz)
 		i++;
+	while (src[j] && (i + j + 1) < siz)
+	{
+		dst[i + j] = src[j];
+		j++;
 	}
-	dst[dst_len + i] = '\0';
-	return (src_len + dst_len);
+	if (i < siz)
+		dst[i + j] = '\0';
+	return (i + ft_strlen(src));
 }
 /*
 #include <stdio.h>
@@ -39,7 +36,7 @@ int	main()
 {
 	char	src[] = "world!";
 	char	dst[10] = "hello, ";
-	size_t	result = ft_strlcat(dst, src, 7);
+	size_t	result = ft_strlcat(dst, src, -1);
 
 	printf("Result: %s, Total length: %zu\n", dst, result);
 }*/

@@ -6,14 +6,14 @@
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:18:21 by czhu              #+#    #+#             */
-/*   Updated: 2024/11/28 16:38:23 by czhu             ###   ########.fr       */
+/*   Updated: 2024/12/02 13:18:30 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-int	check_inset(char c, char const *set)
+static int	check_inset(char c, char const *set)
 {
 	size_t	i;
 
@@ -27,7 +27,7 @@ int	check_inset(char c, char const *set)
 	return (0);
 }
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+static char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
 	size_t	i;
 

@@ -6,7 +6,7 @@
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:18:21 by czhu              #+#    #+#             */
-/*   Updated: 2024/11/28 13:58:36 by czhu             ###   ########.fr       */
+/*   Updated: 2024/12/04 13:40:29 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ void	*ft_calloc(size_t num_elements, size_t element_size)
 	void		*ptr;
 	size_t		total_size;
 
-	if (num_elements == 0 || element_size == 0)
-		return (NULL);
 	total_size = num_elements * element_size;
 	ptr = malloc(total_size);
-	if (ptr == NULL)
+	if (!ptr)
 		return (NULL);
 	ft_bzero(ptr, total_size);
 	return (ptr);
@@ -32,7 +30,9 @@ void	*ft_calloc(size_t num_elements, size_t element_size)
 int	main()
 {
 	// allocate an array of 5 int, all initialized to 0
-	int	*numbers = ft_calloc(5, sizeof(int));
+	int	*numbers = ft_calloc(0, 10);
+	//int	*numbers = calloc(5, 0);
+
 
 	if (numbers == NULL)
 	{

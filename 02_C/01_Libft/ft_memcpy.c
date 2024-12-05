@@ -6,7 +6,7 @@
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:18:21 by czhu              #+#    #+#             */
-/*   Updated: 2024/11/26 12:35:48 by czhu             ###   ########.fr       */
+/*   Updated: 2024/12/03 14:35:13 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
+	char	*d;
+	char	*s;
 
-	d = dest;
-	s = src;
-	if (!dest || !src)
+	d = (char *)dest;
+	s = (char *)src;
+	if (!dest && !src)
 		return (NULL);
 	while (n > 0)
 	{
@@ -44,7 +44,7 @@ int	main()
 	memcpy(dest, src2, 5);
 	printf("overlap, origin: %s\n", dest);
 	
-	char	str[] = "12345abcde";
+	char	str[] = "\0";
 	ft_memcpy(str + 3, str, 5);
 	printf("overlap, new: %s\n", str);
 
