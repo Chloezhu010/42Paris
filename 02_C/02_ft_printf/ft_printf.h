@@ -1,17 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/05 15:52:41 by czhu              #+#    #+#             */
+/*   Updated: 2024/12/06 16:46:59 by czhu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include <stdarg.h>
 # include <unistd.h>
+# include <stdarg.h>
 # include <stdlib.h>
-// main function
-int ft_printf(const char *format, ...)
-// helper functions
-int ft_print_char(int c);
-int ft_print_string(char *str);
-int ft_print_ptr(unsigned long ptr);
-int ft_print_decimal(int n);
-int ft_print_unsigned(unsigned int n);
-int ft_print_hex(unsigned int n, int uppercase);
-int ft_putnbr_base(unsigned long n, char *base);
+# include <stddef.h>
+/* prototype */
+void	ft_putchar_len(char c, int *len);
+void	ft_string(char *args, int *len);
+void	ft_number(int n, int *len);
+void	ft_unsigned(unsigned int n, int *len);
+void	ft_hex(unsigned int n, int *len, char x_or_x);
+void	ft_ptr(size_t ptr, int *len);
 
+int	ft_printf(const char *string, ...)
 #endif
