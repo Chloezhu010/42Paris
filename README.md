@@ -121,9 +121,16 @@
 
 - Resources
   - Build a mini printf: https://www.youtube.com/watch?v=byRw36Y3Hjs
-  - Explanatino on variadic functions: https://www.youtube.com/watch?v=7Sph8JlRo0g
- 
+  - Explanation on variadic functions: https://www.youtube.com/watch?v=7Sph8JlRo0g
 - my_prinf.c
   - Good starting point to understand what it takes to recreate the printf function
+- File structure
+  - Header file
+    - ft_printf.h
+  - Source file
+    - ft_printf.c: main function
+    - ft_word.c: helper function, to print char, string, % sign, normal word
+    - ft_num.c: helper function, to print decimal, integer, unsigned int, hexadecimal, pointer
+  - Makefile
 
 </details>
