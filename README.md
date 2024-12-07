@@ -119,6 +119,10 @@
 ## ft_printf
 <details>
 
+- Description
+  - Recreate the function printf() in C
+- Functions allowed to use
+  - malloc, free, write, va_start, va_arg, va_copy, va_end
 - Resources
   - Build a mini printf: https://www.youtube.com/watch?v=byRw36Y3Hjs
   - Explanation on variadic functions: https://www.youtube.com/watch?v=7Sph8JlRo0g
