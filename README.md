@@ -122,6 +122,9 @@
 - Resources
   - Build a mini printf: https://www.youtube.com/watch?v=byRw36Y3Hjs
   - Explanation on variadic functions: https://www.youtube.com/watch?v=7Sph8JlRo0g
+  - Build a printf part 1 format parser: https://www.youtube.com/watch?v=kM-DOhKR080
+  - Build a printf part 2 render chars & strings: https://www.youtube.com/watch?v=7Cpqc6I9E9M
+  - Build a printf part 3 render int & binary extra feature: https://www.youtube.com/watch?v=WPiZ9rZBllk
 - my_prinf.c
   - Good starting point to understand what it takes to recreate the printf function
 - File structure
