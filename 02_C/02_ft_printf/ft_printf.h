@@ -20,6 +20,7 @@ int	print_format(char spec, va_list ap);
 int	print_digit(int n);
 int	print_unsigned(unsigned int n);
 int	print_hex(unsigned int n, char base);
+int	print_ptr_hex(size_t n);
 int	print_ptr(size_t ptr);
 int	print_char(int c);
 int	print_string(char *str);
