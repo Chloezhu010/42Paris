@@ -110,3 +110,44 @@
 - ft_show_tab
 
 </details>
+
+## Libft
+<details>
+
+- Description
+  - Recreate a library of functions similar to libc
+- Functions allowed to use
+  - malloc, free, write
+- File structure
+  - Header file
+    - libft.h
+  - Source file
+  - Makefile
+
+</details>
+
+## ft_printf
+<details>
+
+- Description
+  - Recreate the function printf() in C
+- Functions allowed to use
+  - malloc, free, write, va_start, va_arg, va_copy, va_end
+- Resources
+  - Build a mini printf: https://www.youtube.com/watch?v=byRw36Y3Hjs
+  - Explanation on variadic functions: https://www.youtube.com/watch?v=7Sph8JlRo0g
+  - Build a printf part 1 format parser: https://www.youtube.com/watch?v=kM-DOhKR080
+  - Build a printf part 2 render chars & strings: https://www.youtube.com/watch?v=7Cpqc6I9E9M
+  - Build a printf part 3 render int & binary extra feature: https://www.youtube.com/watch?v=WPiZ9rZBllk
+- my_prinf.c
+  - Good starting point to understand what it takes to recreate the printf function
+- File structure
+  - Header file
+    - ft_printf.h
+  - Source file
+    - ft_printf.c: main function
+    - ft_word.c: helper function, to print char, string, % sign, normal word
+    - ft_num.c: helper function, to print decimal, integer, unsigned int, hexadecimal, pointer
+  - Makefile
+
+</details>
