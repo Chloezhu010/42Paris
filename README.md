@@ -114,6 +114,16 @@
 ## Libft
 <details>
 
+- Description
+  - Recreate a library of functions similar to libc
+- Functions allowed to use
+  - malloc, free, write
+- File structure
+  - Header file
+    - libft.h
+  - Source file
+  - Makefile
+
 </details>
 
 ## ft_printf
