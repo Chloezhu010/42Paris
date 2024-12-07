@@ -112,13 +112,18 @@
 </details>
 
 ## Libft
+<details>
+
+</details>
 
 ## ft_printf
 <details>
-- Good resources
+
+- Resources
   - Build a mini printf: https://www.youtube.com/watch?v=byRw36Y3Hjs
   - Explanatino on variadic functions: https://www.youtube.com/watch?v=7Sph8JlRo0g
  
 - my_prinf.c
   - Good starting point to understand what it takes to recreate the printf function
+
 </details>
