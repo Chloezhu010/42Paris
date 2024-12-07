@@ -16,13 +16,13 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stddef.h>
-/* prototype */
-void	ft_putchar_len(char c, int *len);
-void	ft_string(char *args, int *len);
-void	ft_number(int n, int *len);
-void	ft_unsigned(unsigned int n, int *len);
-void	ft_hex(unsigned int n, int *len, char x_or_x);
-void	ft_ptr(size_t ptr, int *len);
+int	print_format(char spec, va_list ap);
+int	print_digit(int n);
+int	print_unsigned(unsigned int n);
+int	print_hex(unsigned int n, char base);
+int	print_ptr(size_t ptr);
+int	print_char(int c);
+int	print_string(char *str);
 
-int	ft_printf(const char *string, ...)
+int	ft_printf(const char *format, ...);
 #endif

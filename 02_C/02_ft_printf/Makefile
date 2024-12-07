@@ -1,8 +1,8 @@
 NAME = libftprintf.a
-SOURCES = [][][][]
+SOURCES = \ ft_printf.c ft_num.c ft_word.c
 OBJECTS = $(SOURCES:.c=.o)
 
-CC = CC
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)

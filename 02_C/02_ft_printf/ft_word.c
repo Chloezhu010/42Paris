@@ -12,25 +12,36 @@
 
 #include "ft_printf.h"
 
-void	ft_putchar_len(char c, int *len)
+int	print_char(int c)
 {
-	write(1, &c, 1);
-	(*len)++;
+	return (write(1, &c, 1));
 }
 
-void	ft_string(char *args, int *len)
+int	print_string(char *str)
 {
-	int	i;
+	int	count;
 
-	if (args == NULL)
+	count = 0;
+	if (!str)
 	{
 		write(1, "(null)", 6);
-		(*len) += 6;
+		return (6);
 	}
-	i = 0;
-	while (args[i])
+	while (*str)
 	{
-		ft_putchar_len(args[i], *len);
-		i++;
+		count += print_char((int) *str);
+		str++;
 	}
+	return (count);
 }
+/*
+int	main()
+{
+	print_string("hello world\n");
+	print_string("");
+	print_string("\n");
+	print_string(NULL);
+	print_string("\n");
+	print_string("42\t Coding\n");
+	print_string("1234 world\n");
+}*/
