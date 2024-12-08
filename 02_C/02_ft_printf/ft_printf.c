@@ -12,27 +12,27 @@
 
 #include "ft_printf.h"
 
-int	print_format(char spec, va_list ap)
+int	print_format(char spec, va_list *ap)
 {
 	int	count;
 
 	count = 0;
 	if (spec == 'c')
-		count += print_char(va_arg(ap, int));
+		count += print_char(va_arg(*ap, int));
 	else if (spec == 's')
-		count += print_string(va_arg(ap, char *));
+		count += print_string(va_arg(*ap, char *));
 	else if (spec == 'd' || spec == 'i')
-		count += print_digit(va_arg(ap, int));
+		count += print_digit(va_arg(*ap, int));
 	else if (spec == 'u')
-		count += print_unsigned(va_arg(ap, unsigned int));
+		count += print_unsigned(va_arg(*ap, unsigned int));
 	else if (spec == 'p')
-		count += print_ptr(va_arg(ap, size_t));
+		count += print_ptr(va_arg(*ap, size_t));
 	else if (spec == 'x')
-		count += print_hex(va_arg(ap, unsigned int), 'x');
+		count += print_hex(va_arg(*ap, unsigned int), 'x');
 	else if (spec == 'X')
-		count += print_hex(va_arg(ap, unsigned int), 'X');
+		count += print_hex(va_arg(*ap, unsigned int), 'X');
 	else if (spec == '%')
-		count += print_char("%");
+		count += print_char('%');
 	else
 		count += write(1, &spec, 1);
 	return (count);
@@ -47,8 +47,12 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	while (*format)
 	{
-		if (*format = '%')
-			count += print_format(*++format, ap);
+		if (*format == '%')
+		{
+			format++;
+			if (*format)
+				count += print_format(*format, &ap);
+		}
 		else
 			count += write(1, format, 1);
 		format++;

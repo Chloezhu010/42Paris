@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stddef.h>
-int	print_format(char spec, va_list ap);
+int	print_format(char spec, va_list *ap);
 int	print_digit(int n);
 int	print_unsigned(unsigned int n);
 int	print_hex(unsigned int n, char base);
