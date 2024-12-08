@@ -151,3 +151,33 @@
   - Makefile
 
 </details>
+
+## get_net_line
+<details>
+
+- Description
+- Functions allowed to use
+- Resources
+- File structure
+  - Header file
+  - Source file
+  - Makefile
+
+</details>
+
+## Born2beroot
+<details>
+
+- Description
+- Functions allowed to use
+  - read, malloc, free
+- Resources
+- File structure
+  - Header file
+    - get_next_line.h
+  - Source file
+    - get_next_line.c
+    - get_next_line_utils.c
+  - Makefile
+
+</details>
