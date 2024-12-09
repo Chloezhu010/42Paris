@@ -131,6 +131,7 @@
 
 - Description
   - Recreate the function printf() in C
+  - Need to use varadic function
 - Functions allowed to use
   - malloc, free, write, va_start, va_arg, va_copy, va_end
 - Resources
@@ -156,21 +157,11 @@
 <details>
 
 - Description
-- Functions allowed to use
-- Resources
-- File structure
-  - Header file
-  - Source file
-  - Makefile
-
-</details>
-
-## Born2beroot
-<details>
-
-- Description
+  - Write a function that returns a line read from a file descriptor
+  - Static variable
 - Functions allowed to use
   - read, malloc, free
+- Functions allowed to use
 - Resources
 - File structure
   - Header file
@@ -179,5 +170,20 @@
     - get_next_line.c
     - get_next_line_utils.c
   - Makefile
+
+</details>
+
+## Born2beroot
+<details>
+
+- Description
+  - Setup a virtual machine
+- Functions allowed to use
+- Resources
+  - Walk through of the project, incl. bonus part: https://www.youtube.com/watch?v=EunJ4QJaAEw
+  - Introduction to LVM | Linux Academy: https://www.youtube.com/watch?v=dMHFArkANP8&list=PLAoA-usw1t-4sIlwNXKS2RIn0ZBx4VQhn
+  - Playlist on VM and relevant stuff: https://www.youtube.com/watch?v=dMHFArkANP8&list=PLAoA-usw1t-4sIlwNXKS2RIn0ZBx4VQhn
+- File structure
+  
 
 </details>
