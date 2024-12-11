@@ -179,7 +179,9 @@
   - Setup a virtual machine
 - Functions allowed to use
 - Resources
-  - Walk through of the project, incl. bonus part: https://www.youtube.com/watch?v=EunJ4QJaAEw
+  - Step by step walk through of the project:
+    - https://www.youtube.com/watch?v=EunJ4QJaAEw
+    - https://github.com/pasqualerossi/Born2BeRoot-Guide?tab=readme-ov-file
   - Introduction to LVM | Linux Academy: https://www.youtube.com/watch?v=dMHFArkANP8&list=PLAoA-usw1t-4sIlwNXKS2RIn0ZBx4VQhn
   - Playlist on VM and relevant stuff: https://www.youtube.com/watch?v=dMHFArkANP8&list=PLAoA-usw1t-4sIlwNXKS2RIn0ZBx4VQhn
 - File structure
