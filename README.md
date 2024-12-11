@@ -161,7 +161,6 @@
   - Static variable
 - Functions allowed to use
   - read, malloc, free
-- Functions allowed to use
 - Resources
 - File structure
   - Header file
