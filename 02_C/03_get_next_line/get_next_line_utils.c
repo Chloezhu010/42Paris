@@ -85,9 +85,3 @@ void	*ft_calloc(size_t elementCount, size_t elementSize)
 	ft_bzero(ptr, total);
 	return (ptr);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	printf("%s\n", ft_strchr("bonjour hello", '\0'));
-}*/
