@@ -177,7 +177,6 @@
 
 - Description
   - Setup a virtual machine
-- Functions allowed to use
 - Resources
   - Step by step walk through of the project:
     - https://www.youtube.com/watch?v=EunJ4QJaAEw
@@ -185,6 +184,7 @@
   - Introduction to LVM | Linux Academy: https://www.youtube.com/watch?v=dMHFArkANP8&list=PLAoA-usw1t-4sIlwNXKS2RIn0ZBx4VQhn
   - Playlist on VM and relevant stuff: https://www.youtube.com/watch?v=dMHFArkANP8&list=PLAoA-usw1t-4sIlwNXKS2RIn0ZBx4VQhn
 - File structure
+  - Siganture.txt: contain the shasum of the final .vdi file
   
 
 </details>
