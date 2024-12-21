@@ -6,7 +6,7 @@
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 13:26:59 by czhu              #+#    #+#             */
-/*   Updated: 2024/12/18 17:50:03 by czhu             ###   ########.fr       */
+/*   Updated: 2024/12/19 15:27:46 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,13 @@ char	*read_file(int fd, char *res)
 	{
 		byte_read = read(fd, buffer, BUFFER_SIZE);
 		if (byte_read == -1)
-			return (free(buffer), free(res), NULL);
-		if (byte_read == 0)
-		{
-			free(buffer);
-			buffer = NULL;
-			break ;
-		}
+			return (free(buffer), buffer = NULL, NULL);
 		buffer[byte_read] = '\0';
 		res = ft_free(res, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
 	free(buffer);
-	// if (res && res[0] == '\0')
-	// 	return (free(res), NULL);
 	return (res);
 }
 
@@ -81,13 +73,12 @@ char	*ft_next(char *buffer)
 	int		j;
 
 	i = 0;
+	if (!buffer)
+		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
-	{
-		free(buffer);
-		return (NULL);
-	}
+		return (free(buffer), NULL);
 	next = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
 	i++;
 	j = 0;
@@ -105,8 +96,6 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (free(buffer), buffer = NULL, NULL);
 	buffer = read_file(fd, buffer);
-	if (!buffer)
-		return (free(buffer), buffer = NULL, NULL);
 	line = ft_line(buffer);
 	buffer = ft_next(buffer);
 	return (line);
