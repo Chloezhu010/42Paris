@@ -1,25 +1,19 @@
-#include "minilibx-linux/mlx.h"
+#include "minilibx/mlx.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 #define WIDTH 800
 #define HEIGHT 500
 
-typedef struct s_data {
-	void *img;
-	char *addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
-
+/* test to initialize the connection, win, and create a square with random color */
 int	main()
 {
 	void	*mlx;
     void	*mlx_win;
-	//t_data	*img;
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "hello world!");
+
 	for (int i = HEIGHT * 0.1; i < HEIGHT * 0.9; i++)
 	{
 		for (int j = WIDTH * 0.1; j < WIDTH * 0.9; j++)
