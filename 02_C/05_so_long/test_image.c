@@ -7,7 +7,7 @@ int main()
     void *mlx;
     void *mlx_win;
     void *img;
-    char *relative_path = "./game_images/Player_image.xpm";
+    char *relative_path = "./game_images/enemy_bonus.xpm";
     int img_width;
     int img_height;
     int win_width = 800;
