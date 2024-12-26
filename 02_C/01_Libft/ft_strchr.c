@@ -6,7 +6,7 @@
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:18:21 by czhu              #+#    #+#             */
-/*   Updated: 2024/11/26 16:41:22 by czhu             ###   ########.fr       */
+/*   Updated: 2024/12/25 16:33:19 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ char	*ft_strchr(const char *s, int c)
 #include <string.h>
 int	main()
 {
-	const char str[] = "";
-	char *ptr = ft_strchr(str, ' ');
+	const char str[] = "bonjour hello";
+	char *ptr = ft_strchr(str, '\0');
 
 	if (ptr != NULL)
 		printf("first occurrence: %s\n", ptr);
