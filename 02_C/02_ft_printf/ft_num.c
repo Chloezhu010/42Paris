@@ -6,7 +6,7 @@
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:28:04 by czhu              #+#    #+#             */
-/*   Updated: 2024/12/06 17:56:57 by czhu             ###   ########.fr       */
+/*   Updated: 2024/12/09 15:01:30 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,14 @@ int	print_unsigned(unsigned int n)
 	if (n > 9)
 	{
 		count = print_unsigned(n / 10);
-		return (count + print_unsigned(n % 10)); 
+		return (count + print_unsigned(n % 10));
 	}
 	return (print_char(n + '0'));
 }
 
-
 int	print_hex(unsigned int n, char base)
 {
-	int	count;
+	int		count;
 	char	*base_char;	
 
 	count = 0;
@@ -68,9 +67,9 @@ int	print_hex(unsigned int n, char base)
 		return (print_char(base_char[n]));
 }
 
-int	print_ptr_hex(size_t n)
+int	print_ptr_hex(unsigned long long n)
 {
-	int	count;
+	int		count;
 	char	*base_char;
 
 	base_char = "0123456789abcdef";
@@ -82,14 +81,17 @@ int	print_ptr_hex(size_t n)
 	return (print_char(base_char[n]));
 }
 
-int	print_ptr(size_t ptr)
+int	print_ptr(void *ptr)
 {
-	int	count;
+	int		count;
 
-	count = write(1, "0x", 2);
-	if (ptr == 0)
-		return (count + write(1, "0", 1));
-	return (count + print_ptr_hex(ptr));	
+	if (ptr == NULL)
+		return (write(1, "(nil)", 5));
+	else
+	{
+		count = write(1, "0x", 2);
+		return (count + print_ptr_hex((unsigned long long)ptr));
+	}
 }
 /*
 #include <limits.h>
@@ -103,11 +105,11 @@ int	main()
 	print_char('\n');
 	print_digit(-42);
 	print_char('\n');
-	print_digit(INT32_MIN);
+	print_digit(INT_MIN);
 	print_char('\n');
-	print_digit(INT32_MAX);
+	print_digit(INT_MAX);
 	print_char('\n');
-	printf("%d\n %d\n %d\n %d\n %d\n ", 0, 42, -42, INT32_MIN, INT32_MAX);
+	printf("%d\n %d\n %d\n %d\n %d\n ", 0, 42, -42, INT_MIN, INT_MAX);
 
 	// test on %u
 	print_unsigned(0);
@@ -127,7 +129,7 @@ int	main()
 
 	// test on %p
 	int	num = 42;
-	char str[] = "hello world";
+	char str[] = "";
 	void *ptr1 = &num;
 	void *ptr2 = str;
 	void *ptr3 = NULL;

@@ -6,7 +6,7 @@
 /*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:36:35 by czhu              #+#    #+#             */
-/*   Updated: 2024/12/06 17:10:12 by czhu             ###   ########.fr       */
+/*   Updated: 2024/12/09 15:00:37 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	print_format(char spec, va_list *ap)
 	else if (spec == 'u')
 		count += print_unsigned(va_arg(*ap, unsigned int));
 	else if (spec == 'p')
-		count += print_ptr(va_arg(*ap, size_t));
+		count += print_ptr(va_arg(*ap, void *));
 	else if (spec == 'x')
 		count += print_hex(va_arg(*ap, unsigned int), 'x');
 	else if (spec == 'X')
@@ -40,8 +40,8 @@ int	print_format(char spec, va_list *ap)
 
 int	ft_printf(const char *format, ...)
 {
-	va_list ap;
-	int	count;
+	va_list	ap;
+	int		count;
 
 	count = 0;
 	va_start(ap, format);

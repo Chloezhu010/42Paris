@@ -1,14 +1,15 @@
 NAME = libftprintf.a
-SOURCES = \ ft_printf.c ft_num.c ft_word.c
+SOURCES = ft_printf.c ft_num.c ft_word.c
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+AR = ar
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(AR) -r $@ $?
+	$(AR) rcs $@ $?
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $?
@@ -21,4 +22,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
