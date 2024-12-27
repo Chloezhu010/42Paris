@@ -18,7 +18,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			ft_lstclear(&new_list, del);
 			return (NULL);
 		}
-		// add the new node to the new lsit
+		// add the new node to the new list
 		ft_lstadd_back(&new_list, new_node);
 		lst = lst->next;
 	}
