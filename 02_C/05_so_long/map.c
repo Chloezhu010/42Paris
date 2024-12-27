@@ -1,52 +1,44 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/25 12:43:34 by czhu              #+#    #+#             */
-/*   Updated: 2024/12/26 13:22:58 by czhu             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "so_long.h"
 
-/* calculate map height */
-int	count_map_line(char *map_path)
+int	count_map_height(char *map)
 {
-	int		fd;
-	int		height;
+	int	fd;
+	int	height;
 	char	*line;
 
+	// initialization
 	height = 0;
-	fd = open(map_path, O_RDONLY);
+	fd = open(map, O_RDONLY);
+	// input validation
 	if (fd < 0)
 		return (-1);
+	// loop through fd to cal. height
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		height++;
+		height ++;
 		free(line);
 		line = NULL;
 	}
-	close(fd);
-	return (height);
+	close (fd);
+	return (height);	
 }
 
-/* read and parse the map */
-int	parse_map(t_game *game, char *map_path)
+int	parse_map(t_game *game, char *map)
 {
-	int		fd;
-	int		i;
+	int	fd;
+	int	i;
 	char	*line;
 
-	game->map_height = count_map_line(map_path);
+	game->map_height = count_map_height(map);
+	// input validation
 	if (game->map_height == 0)
 		return (0);
+	// malloc for the map
 	game->map = (char **)malloc(sizeof(char *) * (game->map_height + 1));
 	if (!game->map)
 		return (0);
-	fd = open(map_path, O_RDONLY);
+	// parse the map line by line
+	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		return (free(game->map), game->map = NULL, 0);
 	i = 0;
@@ -59,6 +51,36 @@ int	parse_map(t_game *game, char *map_path)
 	}
 	game->map[i] = NULL;
 	close(fd);
-	//return (validate_map(game));
+	// return value
 	return (1);
+}
+
+#include <stdio.h>
+
+//void	free_map(t_game *game)
+
+int	main(int ac, char **av)
+{
+	int	height;
+	t_game game;
+
+	if (ac != 2)
+    {
+        printf("Error\nNeed a map input\n");
+        return (1);
+    }
+
+	if (!parse_map(&game, av[1]))
+	{
+		printf("Error\nFail to open the map\n");
+		//free_map(&game);
+		return (1);
+	}
+
+	// test count_map_height function
+	height = count_map_height(av[1]);
+	printf("map height: %d\n", height);
+
+	// test parse_map function
+	printf("map dimension: %d x %d\n", game.map_width, game.map_height);
 }

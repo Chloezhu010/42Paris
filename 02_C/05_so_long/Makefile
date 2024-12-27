@@ -1,9 +1,9 @@
 NAME = test_map
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLX_FLAGS = -Imlx_linux -lXext -lX11 -lm -lz
+MLX_FLAGS = -framework OpenGL -framework AppKit
 # main src files
-SRC = main_map.c map.c check_map.c
+SRC = map.c
 OBJ = $(SRC:.c=.o)
 # include directory
 INC = -I./libft
