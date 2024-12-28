@@ -54,33 +54,3 @@ int	parse_map(t_game *game, char *map)
 	// return value
 	return (1);
 }
-
-#include <stdio.h>
-
-//void	free_map(t_game *game)
-
-int	main(int ac, char **av)
-{
-	int	height;
-	t_game game;
-
-	if (ac != 2)
-    {
-        printf("Error\nNeed a map input\n");
-        return (1);
-    }
-
-	if (!parse_map(&game, av[1]))
-	{
-		printf("Error\nFail to open the map\n");
-		//free_map(&game);
-		return (1);
-	}
-
-	// test count_map_height function
-	height = count_map_height(av[1]);
-	printf("map height: %d\n", height);
-
-	// test parse_map function
-	printf("map dimension: %d x %d\n", game.map_width, game.map_height);
-}

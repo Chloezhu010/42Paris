@@ -32,7 +32,7 @@ typedef struct s_game
 	int		moves;
 	void	*img_player;
 	void	*img_wall;
-	void	*img_item;
+	void	*img_collectible;
 	void	*img_exit;
 	void	*img_floor;
 }	t_game;
@@ -40,12 +40,18 @@ typedef struct s_game
 /* init.c */
 
 /* map.c */
-int		count_map_line(char *map_path);
+int		count_map_height(char *map_path);
 int		parse_map(t_game *game, char *map_path);
 
-/* check_map.c*/
-int		check_rectangular(t_game *game);
+/* map_utils.c*/
+int		check_shape(t_game *game);
 int		check_wall(t_game *game);
+int		check_item(t_game *game);
+void	player_pos(t_game *game, int *player_x, int *player_y);
+int		**duplicate_map(t_game *game);
+void	free_tempmap(int **temp_map, int height);
+void	flood_fill(t_game *game, int **temp_map, int x, int y);
+int		check_accessibility(t_game *game, int **temp_map);
 int		validate_map(t_game *game);
 
 /* movement.c */

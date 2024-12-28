@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -framework OpenGL -framework AppKit
 # main src files
-SRC = map.c
+SRC = map.c map_utils.c map_main.c
 OBJ = $(SRC:.c=.o)
 # include directory
 INC = -I./libft
