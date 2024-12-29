@@ -17,7 +17,10 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <stdio.h>
 # include "libft/libft.h"
+
+# define TILE_SIZE 32
 
 typedef struct s_game
 {
@@ -38,6 +41,9 @@ typedef struct s_game
 }	t_game;
 
 /* init.c */
+void	init_game(t_game *game);
+void	*load_single_texture(void *mlx, char *path, int *width, int *height);
+void	load_texture(t_game *game);
 
 /* map.c */
 int		count_map_height(char *map_path);

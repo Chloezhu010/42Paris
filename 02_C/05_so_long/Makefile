@@ -1,10 +1,18 @@
-NAME = test_map
+# executable name
+NAME = test_init
+
+# path to the minilibx lib
+MLX_DIR = ./minilibx
+
+# compiler & flags
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLX_FLAGS = -framework OpenGL -framework AppKit
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+
 # main src files
-SRC = map.c map_utils.c map_main.c
+SRC = map.c map_utils.c init.c main_init.c
 OBJ = $(SRC:.c=.o)
+
 # include directory
 INC = -I./libft
 
