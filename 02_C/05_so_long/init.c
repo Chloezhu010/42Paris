@@ -19,7 +19,6 @@ void	init_game(t_game *game)
 		exit (1);
 	}
 	game->moves = 0;
-	game->collectibles = 0;
 	// load the textures
 	load_texture(game);
 }

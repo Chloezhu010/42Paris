@@ -1,5 +1,5 @@
 # executable name
-NAME = test_init
+NAME = test_movement
 
 # path to the minilibx lib
 MLX_DIR = ./minilibx
@@ -10,11 +10,11 @@ CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 # main src files
-SRC = map.c map_utils.c init.c main_init.c
+SRC = map.c map_utils.c init.c render.c movement.c main_movement.c
 OBJ = $(SRC:.c=.o)
 
 # include directory
-INC = -I./libft
+INC = -I./libft -I/$(MLX_DIR)
 
 all: $(NAME)
 
@@ -22,8 +22,12 @@ all: $(NAME)
 libft/libft.a:
 	make -C libft
 
-$(NAME): $(OBJ) libft/libft.a
-	$(CC) $(OBJ) libft/libft.a $(CFLAGS) $(MLX_FLAGS) -o $(NAME)
+# make mlx
+$(MLX_DIR)/libmlx.a:
+	make -C $(MLX_DIR)
+
+$(NAME): $(MLX_DIR)/libmlx.a libft/libft.a $(OBJ)
+	$(CC) $(OBJ) -o $(NAME) -L./libft -lft $(MLX_FLAGS)
 
 %.o:$.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
@@ -31,6 +35,7 @@ $(NAME): $(OBJ) libft/libft.a
 clean:
 	rm -f $(OBJ)
 	make -C libft clean
+	make -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)

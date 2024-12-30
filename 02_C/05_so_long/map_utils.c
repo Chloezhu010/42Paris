@@ -51,6 +51,7 @@ int	check_item(t_game *game)
 	int	player_count = 0;
 	int	collectible_count = 0;
 
+	game->collectibles = 0; // initialize at start
 	while (i < game->map_height)
 	{
 		j = 0;
@@ -58,13 +59,16 @@ int	check_item(t_game *game)
 		{
 			if (game->map[i][j] == 'E') exit_count++;
 			else if (game->map[i][j] == 'P') player_count++;
-			else if (game->map[i][j] == 'C') collectible_count++;
+			else if (game->map[i][j] == 'C')
+			{
+				collectible_count++;
+				game->collectibles++;
+			}
 			else if (game->map[i][j] != '0' && game->map[i][j] != '1') return (0);
 			j++;
 		}
 		i++;
 	}
-	game->collectibles = collectible_count;
 	return (exit_count == 1 && player_count == 1 && collectible_count > 0);
 }
 

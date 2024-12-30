@@ -38,5 +38,12 @@ int	main(int ac, char **av)
     // keep the window open
     mlx_loop(game.mlx);
 
+    // cleanup afterwards
+    cleanup_texture(&game);
+    mlx_destroy_window(game.mlx, game.win);
+    // mlx_destroy_display(game.mlx);
+    free(game.mlx);
+    free_map(&game);
+
     return (0);
 }

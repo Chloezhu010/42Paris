@@ -20,7 +20,7 @@
 # include <stdio.h>
 # include "libft/libft.h"
 
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 
 typedef struct s_game
 {
@@ -42,7 +42,6 @@ typedef struct s_game
 
 /* init.c */
 void	init_game(t_game *game);
-void	*load_single_texture(void *mlx, char *path, int *width, int *height);
 void	load_texture(t_game *game);
 
 /* map.c */
@@ -60,9 +59,14 @@ void	flood_fill(t_game *game, int **temp_map, int x, int y);
 int		check_accessibility(t_game *game, int **temp_map);
 int		validate_map(t_game *game);
 
-/* movement.c */
-
 /* render.c */
+void    render_map(t_game *game);
+void    render_player(t_game *game);
+int     render_frame(t_game *game);
+
+/* movement.c */
+int     keypress(int keycode, t_game *game);
+int		cross_close(t_game *game);
 
 /* utils.c */
 
