@@ -1,6 +1,7 @@
 
 # Solong
-
+## Demo
+![Demo GIF](demo/assasin_eats_donuts.gif)
 
 ## Project description
 
