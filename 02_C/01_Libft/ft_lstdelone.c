@@ -30,7 +30,7 @@ int	main()
 {
 	char *str1 = malloc(20 * sizeof(char));
 	snprintf(str1, 20, "node1 content");
-	char *str2 = malloc(20 * sizeof(char));
+	char *str2 = malloc(d20 * sizeof(char));
 	snprintf(str2, 20, "node2 content");
 	char *str3 = malloc(20 * sizeof(char));
 	snprintf(str3, 20, "node3 content");
