@@ -139,12 +139,12 @@ solong/
     - void	move_player(t_game *game, int dx, int dy)
 
 ### Game logic
-- movemment.c 
-    - void	handle_interactions(t_game *game, int new_x, int new_y)
-    - void	update_gamestate(t_game *game, int new_x, int new_y)
 - movement_key.c 
     - int	keypress(int keycode, t_game *game)
     - int	cross_close(t_game *game)
+- movemment.c 
+    - void	handle_interactions(t_game *game, int new_x, int new_y)
+    - void	update_gamestate(t_game *game, int new_x, int new_y)
 
 ### Cleanup and exit
 - cleanup.c 
