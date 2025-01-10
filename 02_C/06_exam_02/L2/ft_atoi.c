@@ -32,7 +32,7 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * res);
 }
-
+/*
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -53,4 +53,4 @@ int	main()
 	printf("%d: %d\n", ft_atoi(str6), atoi(str6));
 
 	printf("%d\n", atoi(str1));
-}
+}*/
