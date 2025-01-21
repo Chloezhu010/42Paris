@@ -66,7 +66,7 @@ void    free_error(t_stack_node **a)
     exit(1);
 }
 
-
+/*
 // ==== below testing ====
 #include <stdio.h>
 
@@ -82,4 +82,4 @@ void    free_error(t_stack_node **a)
 //     printf("%d\n", error_syntax(s2));
 //     printf("%d\n", error_syntax(s3));
 //     printf("%d\n", error_syntax(s4));
-// }
+// }*/
