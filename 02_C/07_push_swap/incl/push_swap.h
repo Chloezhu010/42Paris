@@ -2,6 +2,12 @@
 # define PUSH_SWAP_H
 
 #include <unistd.h>
+#include <stdbool.h>
+#include <limits.h>
+#include <stdlib.h>
+#include "../incl/libft.h"
+
+ 
 
 typedef struct  s_stack_node
 {
@@ -15,6 +21,16 @@ typedef struct  s_stack_node
     struct s_stack_node *prev;
 } t_stack_node;
 
+// handle errors
 
+// stack initiation
+
+// nodes initiation
+
+// stack utils
+
+// commands
+
+// algo
 
 #endif
