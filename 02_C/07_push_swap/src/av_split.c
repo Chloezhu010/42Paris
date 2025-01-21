@@ -24,6 +24,7 @@ static int   count_word(char *str, char c)
     return (count);
 }
 
+// used to subtrack the word in place
 static char *get_next_word(char *str, char c)
 {
     static int  curr = 0; // initialize curr to 0 only once here
@@ -46,6 +47,24 @@ static char *get_next_word(char *str, char c)
     return (next_word);
 }
 
+// free the split string array
+void    free_split(char **str)
+{
+    int i;
+
+    i = 0;
+    if (!str)
+        return ;
+    while (str[i])
+    {
+        free(str[i]);
+        str[i] = NULL;
+        i++;
+    }
+    free(str);
+}
+
+// main split function
 char    **av_split(char *str, char c)
 {
     int     count;
@@ -62,9 +81,7 @@ char    **av_split(char *str, char c)
         res[i] = get_next_word(str, c);
         if (!res[i])
         {
-            while (i > 0)
-                free(res[--i]);
-            free(res);
+            free_split(res);
             return (NULL);
         }
         i++;
@@ -72,28 +89,12 @@ char    **av_split(char *str, char c)
     res[i] = NULL;
     return (res);
 }
-
-void    free_split(char **str)
-{
-    int i;
-
-    i = 0;
-    if (!str)
-        return (NULL);
-    while (str[i])
-    {
-        free(str[i]);
-        str[i] = NULL;
-        i++;
-    }
-    free(str);
-}
 /*
 // below testing
 #include <stdio.h>
 int main()
 {
-    char    *str = "this is school 42 ! 42 42";
+    char    *str = "1 --    45 32";
     int     word_count = count_word(str, ' ');
     // char    *next_word;
     char    **res;
