@@ -1,16 +1,61 @@
 #include "../incl/push_swap.h"
+
 // convert string to long
 static long    ft_atol(char *str)
 {
-    
+    long    res;
+    int     i;
+    int     sign;
+
+    res = 0;
+    i = 0;
+    sign = 1;
+    if (!str)
+        return (0);
+    while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+        i++;
+    if (str[i] == '-' || str[i] == '+')
+    {
+        if (str[i] == '-')
+            sign = -1;
+        i++;
+    }
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        res = res * 10 + str[i] - '0';
+        i++;
+    }
+    return (res * sign);
 }
 
 // append node to the stack
-static void append_node(t_stack_node **stack, int n)
+void append_node(t_stack_node **stack, int n)
 {
-
+    t_stack_node    *new_node;
+    t_stack_node    *curr;
+    
+    if (!stack)
+        return;
+    new_node = malloc(sizeof(t_stack_node));
+    if (!new_node)
+        return ;
+    new_node->next = NULL; // intialize with null, as it will be the last node
+    new_node->nbr = n; // set the value of the node as n
+    new_node->cheapest = 0; // initialize with 0
+    if (*stack == NULL) // if the stack is empty, aka no node
+    {
+        *stack = new_node; // set the header to the new node
+        new_node->prev = NULL; // set the prev as null, as it's the first node
+    }
+    else
+    {
+        curr = *stack;
+        while (curr->next != NULL)
+            curr = curr->next;
+        curr->next = new_node;
+        new_node->prev = curr;
+    }
 }
-
 
 // initialize stack a, append node & handle errors
 void    init_stack_a(t_stack_node **a, char **av)
@@ -21,14 +66,33 @@ void    init_stack_a(t_stack_node **a, char **av)
     i = 0;
     while (av[i])
     {
-        if (error_syntax(av[i])) // check syntax
+        if (error_syntax(av[i])) // check syntax problem
             free_error(a);
         n = ft_atol(av[i]); // convert the string to long
         if (n > INT_MAX || n < INT_MIN) // check int limits
             free_error(a);
-        if (error_duplicate(*a, (int)n))
+        if (error_duplicate(*a, (int)n)) // check duplicate problem
             free_error(a);
         append_node(a, (int)n);
         i++;
     }
 }
+/*
+=== below testing ===
+#include <stdlib.h>
+#include <stdio.h>
+// testing ft_atol
+int main()
+{
+    char    *s1 = "-42";
+    char    *s2 = "42";
+    char    *s3 = "   -2147483648";
+    char    *s4 = "  2147483647";
+    char    *s5 = "  ++--45";
+
+    printf("%ld: %ld\n", atol(s1), ft_atol(s1));
+    printf("%ld: %ld\n", atol(s2), ft_atol(s2));
+    printf("%ld: %ld\n", atol(s3), ft_atol(s3));
+    printf("%ld: %ld\n", atol(s4), ft_atol(s4));
+    printf("%ld: %ld\n", atol(s5), ft_atol(s5));
+}*/
