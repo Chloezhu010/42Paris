@@ -14,16 +14,22 @@ void    print_stack(t_stack_node *stack)
 
 int main()
 {
-    t_stack_node    *stack = NULL;
+    t_stack_node    *stack_a = NULL;
+    t_stack_node    *stack_b = NULL;
 
-    append_node(&stack, 1);
-    append_node(&stack, 4);
-    append_node(&stack, 2);
+    append_node(&stack_a, 1);
+    append_node(&stack_a, 4);
+    append_node(&stack_a, 2);
 
     printf("stack before:\n");
-    print_stack(stack);
+    print_stack(stack_a);
+    print_stack(stack_b);
 
-    swap(&stack);
+    // swap(&stack_a);
+    // rev_rotate(&stack_a);
+    // rotate(&stack_a);
+    push(&stack_a, &stack_b);
     printf("stack after:\n");
-    print_stack(stack);
+    print_stack(stack_a);
+    print_stack(stack_b);
 }

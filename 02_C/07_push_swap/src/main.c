@@ -16,7 +16,7 @@ int main(int ac, char **av)
         av = av_split(av[1], ' '); // call av_split to split into substrings
 
     // initialize stack A by appending each input number as a node to it
-    init_stack_a(&a, av + 1);
+    init_stack_a(&a, av + 1); // bypass av[0]
    
     // check if stack A is sorted
     if (!stack_sorted(a))
