@@ -72,7 +72,7 @@ char    **av_split(char *str, char c)
     char    **res;
 
     count = count_word(str, c);
-    res = malloc(sizeof(char *) * (count + 1));
+    res = malloc(sizeof(char *) * (count + 2));
     if (!res)
         return (NULL);
     i = 0;

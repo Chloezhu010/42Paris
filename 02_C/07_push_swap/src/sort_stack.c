@@ -43,7 +43,7 @@ void    move_b_to_a(t_stack_node **a, t_stack_node **b)
 // bring the min node to the top
 void    min_to_top(t_stack_node **a)
 {
-    if ((*a)->nbr != find_min(*a)->nbr)
+    while ((*a)->nbr != find_min(*a)->nbr)
     {
         if (find_min(*a)->above_median == true)
             ra(a, false);

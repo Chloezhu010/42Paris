@@ -21,6 +21,7 @@ typedef struct  s_stack_node
 
 // handle input
 char    **av_split(char *str, char c);
+void    free_split(char **str);
 int     error_syntax(char *str);
 int     error_duplicate(t_stack_node *a, int n);
 void    free_stack(t_stack_node **stack);

@@ -22,7 +22,7 @@
 3. Command implementation
 4. Sorting algo implementation
 5. Testing
-# Related files & Notes
+# Related Notes
 - Algo: Turk Algo
   - link: https://medium.com/@ayogun/push-swap-c1f5d2d41e97
   - push nodes into stack B until there are only 3 nodes left in A
