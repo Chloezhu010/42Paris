@@ -1,6 +1,6 @@
 #include "../incl/push_swap.h"
 
-// convert string to long
+/* convert string to long */
 static long    ft_atol(char *str)
 {
     long    res;
@@ -28,7 +28,7 @@ static long    ft_atol(char *str)
     return (res * sign);
 }
 
-// append node to the stack
+/* append node to the stack */
 void append_node(t_stack_node **stack, int n)
 {
     t_stack_node    *new_node;
@@ -57,7 +57,7 @@ void append_node(t_stack_node **stack, int n)
     }
 }
 
-// initialize stack a, append node & handle errors
+/* initialize stack a, append node & handle errors */
 void    init_stack_a(t_stack_node **a, char **av)
 {
     long    n;
@@ -77,22 +77,39 @@ void    init_stack_a(t_stack_node **a, char **av)
         i++;
     }
 }
-/*
-=== below testing ===
-#include <stdlib.h>
-#include <stdio.h>
-// testing ft_atol
-int main()
-{
-    char    *s1 = "-42";
-    char    *s2 = "42";
-    char    *s3 = "   -2147483648";
-    char    *s4 = "  2147483647";
-    char    *s5 = "  ++--45";
 
-    printf("%ld: %ld\n", atol(s1), ft_atol(s1));
-    printf("%ld: %ld\n", atol(s2), ft_atol(s2));
-    printf("%ld: %ld\n", atol(s3), ft_atol(s3));
-    printf("%ld: %ld\n", atol(s4), ft_atol(s4));
-    printf("%ld: %ld\n", atol(s5), ft_atol(s5));
-}*/
+/* search for the cheapest node in the stack */
+t_stack_node    *get_cheapest(t_stack_node *stack)
+{
+    if (!stack)
+        return (NULL);
+    while (stack)
+    {
+        if (stack->cheapest == true)
+            return (stack);
+        stack = stack->next;
+    }
+    return (NULL);
+}
+
+// prep the stack, so that the node is at the top to be pushed
+void    prep_for_push(t_stack_node **stack, t_stack_node *node, char stack_name)
+{
+    while (*stack != node)
+    {
+        if (stack_name == 'a')
+        {
+            if (node->above_median)
+                ra(stack, false);
+            else
+                rra(stack, false);
+        }
+        else if (stack_name == 'b')
+        {
+            if (node->above_median)
+                rb(stack, false);
+            else
+                rrb(stack, false);
+        }
+    }
+}

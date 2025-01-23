@@ -21,6 +21,7 @@ int stack_len(t_stack_node *stack)
     t_stack_node    *curr;
     
     count = 0;
+    curr = stack;
     if (!stack)
         return (0);
     while (curr != NULL)

@@ -89,35 +89,3 @@ char    **av_split(char *str, char c)
     res[i] = NULL;
     return (res);
 }
-/*
-// below testing
-#include <stdio.h>
-int main()
-{
-    char    *str = "1 --    45 32";
-    int     word_count = count_word(str, ' ');
-    // char    *next_word;
-    char    **res;
-    int     i;
-
-    printf("count: %d\n", word_count);
-    
-    // // test get next word
-    // i = 0;
-    // while (i < word_count)
-    // {
-    //     next_word = get_next_word(str, ' ');
-    //     i++;
-    //     printf("next word: %s\n", next_word);
-    // }
-    // test av_split
-    i = 0;
-    res = av_split(str, ' ');
-    while (i < word_count)
-    {
-        printf("split: %s\n", res[i]);
-        i++;
-    }
-    free_split(res);
-    return (0);
-}*/

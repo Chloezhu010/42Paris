@@ -8,12 +8,18 @@ CFLAGS = -Wall -Wextra -Werror
 # main src files
 SRC_DIR = src
 SRC = $(SRC_DIR)/stack_init.c \
+		$(SRC_DIR)/stack_utils.c \
+		$(SRC_DIR)/av_split.c \
 		$(SRC_DIR)/error.c \
 		$(SRC_DIR)/swap.c \
 		$(SRC_DIR)/rotate.c \
 		$(SRC_DIR)/rev_rotate.c \
 		$(SRC_DIR)/push.c \
-		$(SRC_DIR)/main_test.c
+		$(SRC_DIR)/init_node_a.c \
+		$(SRC_DIR)/init_node_b.c \
+		$(SRC_DIR)/sort_three.c \
+		$(SRC_DIR)/sort_stack.c \
+		$(SRC_DIR)/main.c
 OBJ = $(SRC:.c=.o)
 
 # include directory
@@ -38,10 +44,10 @@ $(NAME): $(OBJ) $(LIBFT)
 
 clean:
 	rm -f $(OBJ)
-	make -C libft clean
+	make -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -f ./$(NAME)
+	rm -f $(NAME)
 	make -C $(LIBFT_DIR) fclean
 
 re: fclean all

@@ -8,9 +8,11 @@ void    push(t_stack_node **src, t_stack_node **dest)
         return;
     node_to_push = *src;
     *src = (*src)->next;
+    // update the src stack's header
     if (*src != NULL)
         (*src)->prev = NULL;
     node_to_push->next = *dest;
+    // update the dest stack's header
     if (*dest != NULL)
         (*dest)->prev = node_to_push;
     *dest = node_to_push;

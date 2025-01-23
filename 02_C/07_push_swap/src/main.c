@@ -24,9 +24,9 @@ int main(int ac, char **av)
         if (stack_len(a) == 2) // if stack has 2 nbr, simply swap
             sa(&a, false);
         else if (stack_len(a) == 3) // if stack has 3 nbr, use sort three algo
-            sort_three(a);
+            sort_three(&a);
         else
-            sort_stacks(&a, &b); // if stack has >3 nbr, use Turk algo
+            sort_stack(&a, &b); // if stack has >3 nbr, use Turk algo
     }
     free_stack(&a);
     return (0); 
