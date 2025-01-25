@@ -1,43 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/24 11:58:34 by czhu              #+#    #+#             */
+/*   Updated: 2025/01/25 12:05:06 by czhu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incl/push_swap.h"
 
-#include <stdio.h>
-int main(int ac, char **av)
+static void	sort_stack_a(t_stack_node **a, t_stack_node **b)
 {
-    // declare ptrs to 2 linked list, for stack A & B
-    t_stack_node    *a;
-    t_stack_node    *b;
-    char            **nbr;
-    
-    // set both to null
-    a = NULL;
-    b = NULL;
-    // handle input count errors. ac must >= 2 and 2nd arg must not be empty
-    if (ac == 1 || (ac == 2 && !av[1][0]))
-        return (1); // if input error, return error
-    if (ac == 2)  // if in string format
-    {
-        nbr = av_split(av[1], ' ');
-        if (!nbr)
-        {
-            ft_printf("Error\n");
-            return (1);
-        }
-    }
-    else
-        nbr = av + 1;
+	if (!stack_sorted(*a))
+	{
+		if (stack_len(*a) == 2)
+			sa(a, 0);
+		else if (stack_len(*a) == 3)
+			sort_three(a);
+		else
+			sort_stack(a, b);
+	}
+}
 
-    // initialize stack A by appending each input number as a node to it
-    init_stack_a(&a, nbr); 
-    // check if stack A is sorted
-    if (!stack_sorted(a))
-    {
-        if (stack_len(a) == 2) // if stack has 2 nbr, simply swap
-            sa(&a, false);
-        else if (stack_len(a) == 3) // if stack has 3 nbr, use sort three algo
-            sort_three(&a);
-        else
-            sort_stack(&a, &b); // if stack has >3 nbr, use Turk algo
-    }
-    free_stack(&a);
-    return (0); 
+int	main(int ac, char **av)
+{
+	t_stack_node	*a;
+	t_stack_node	*b;
+	char			**nbr;
+	int				is_split;
+
+	a = NULL;
+	b = NULL;
+	is_split = 0;
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		exit (1);
+	if (ac == 2)
+	{
+		nbr = ft_split(av[1], ' ');
+		is_split = 1;
+	}
+	else
+		nbr = av + 1;
+	init_stack_a(&a, nbr, is_split);
+	sort_stack_a(&a, &b);
+	free_stack(&a);
+	if (is_split == 1)
+		ft_freeup(nbr);
 }

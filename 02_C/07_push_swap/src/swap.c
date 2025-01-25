@@ -1,48 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/24 12:52:25 by czhu              #+#    #+#             */
+/*   Updated: 2025/01/24 12:54:58 by czhu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incl/push_swap.h"
 
 // swap function
-void swap(t_stack_node **stack)
+void	swap(t_stack_node **stack)
 {
-    t_stack_node    *first;
-    t_stack_node    *second;
+	t_stack_node	*first;
+	t_stack_node	*second;
 
-    // check if the ptr to the stack, the stack itself are null, and stack has >2 nodes
-    if (!stack || !*stack || (*stack)->next == NULL)
-        return ;
-    first = *stack;
-    second = first->next;
-
-    first->next = second->next; // eg. 1 next now points to 3
-    if (second->next)
-        second->next->prev = first; // eg. 3 prev now points to 1
-    second->prev = first->prev; // eg. 2 prev now points to null
-    first->prev = second; // 1 prev now points to 2
-    second->next = first; // 2 next now points to 1
-    // update the stack header
-    *stack = second;
+	if (!stack || !*stack || (*stack)->next == NULL)
+		return ;
+	first = *stack;
+	second = first->next;
+	first->next = second->next;
+	if (second->next)
+		second->next->prev = first;
+	second->prev = first->prev;
+	first->prev = second;
+	second->next = first;
+	*stack = second;
 }
 
 // swap the first 2 nodes of a
-void    sa(t_stack_node **a, bool print)
+void	sa(t_stack_node **a, int print)
 {
-    swap(a);
-    if (!print)
-        ft_printf("sa\n");
+	swap(a);
+	if (!print)
+		ft_printf("sa\n");
 }
 
 // swap the first 2 nodes of b
-void    sb(t_stack_node **b, bool print)
+void	sb(t_stack_node **b, int print)
 {
-    swap(b);
-    if (!print)
-        ft_printf("sb\n");
+	swap(b);
+	if (!print)
+		ft_printf("sb\n");
 }
 
 // swap the first 2 nodes of a & b
-void    ss(t_stack_node **a, t_stack_node **b, bool print)
+void	ss(t_stack_node **a, t_stack_node **b, int print)
 {
-    swap(a);
-    swap(b);
-    if (!print)
-        ft_printf("ss\n");
+	swap(a);
+	swap(b);
+	if (!print)
+		ft_printf("ss\n");
 }

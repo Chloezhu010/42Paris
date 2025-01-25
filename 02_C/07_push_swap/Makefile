@@ -9,7 +9,6 @@ CFLAGS = -Wall -Wextra -Werror
 SRC_DIR = src
 SRC = $(SRC_DIR)/stack_init.c \
 		$(SRC_DIR)/stack_utils.c \
-		$(SRC_DIR)/av_split.c \
 		$(SRC_DIR)/error.c \
 		$(SRC_DIR)/swap.c \
 		$(SRC_DIR)/rotate.c \
