@@ -1,37 +1,58 @@
 #include "../incl/minitalk.h"
 
-/* convert bits to char;
-    SIGUSR1 -> 1 using OR and assign
-    SIGUSR2 -> 0 using AND NOT and assign
-    when received 8 bits, print the char */
-void    ft_btoa(int sig)
+void    ft_send_ok(pid_t pid)
 {
-    static int  bit;
-    static int  i;
+    if (kill(pid, SIGUSR1) < 0)
+        ft_error(0);
+}
 
+void    ft_sig_handler(int sig, siginfo_t *info, void *context)
+{
+    static int  bit = 1;
+    static pid_t  client_id = 0;
+    static char c = 0;
+
+    (void)context;
+    // only update the client id when there is a valide si_pid
+    if (info->si_pid != 0)
+        client_id = info->si_pid;
+    // convert bits to char
+    // SIGUSR1 -> 0, SIGUSR2 -> 1
     if (sig == SIGUSR1)
-        i |= (1 << bit);
-    else if (sig == SIGUSR2)
-        i &= ~(1 << bit);
-    bit++;
-    if (bit == 8)
+        c += 0;
+    if (sig == SIGUSR2)
+        c += bit;
+    bit <<= 1;
+    if (bit == 256)
     {
-        ft_printf("%c", i);
-        bit = 0;
-        i = 0;
+        // reset bit to 1
+        bit = 1;
+        // if c = 0, send sigusr2 to the client
+        if (c == 0)
+            if (kill(client_id, SIGUSR2) < 0)
+                ft_error(0);
+        if (c != 0)
+            ft_printf("%c", c);
+        //reset c to 0
+        c = 0;
     }
+    // send sigusr1 to the client for message acknowledgement
+    if (kill(client_id, SIGUSR1) < 0)
+        ft_error(0);
 }
 
 int main()
 {
-    // display the server PID
-    ft_printf("Server PID: %d\n", getpid());
-    // keep the server alive, listening to signals
+    pid_t   pid;
+    struct sigaction    sa;
+
+    sa.sa_flags = SA_SIGINFO;
+    sa.sa_sigaction = ft_sig_handler;
+    pid = getpid();
+    if (sigaction(SIGUSR1, &sa, NULL) < 0 || sigaction(SIGUSR2, &sa, NULL) < 0)
+        ft_error(1);
+    ft_printf("PID: %d\n", pid);
     while (1)
-    {
-        signal(SIGUSR1, ft_btoa);
-        signal(SIGUSR2, ft_btoa);
         pause();
-    }
     return (0);
 }

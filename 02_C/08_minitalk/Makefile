@@ -14,10 +14,12 @@ LIBFT_DIR = src/libft/
 # src files
 SERVER_SRC = $(SRC_DIR)server.c
 CLIENT_SRC = $(SRC_DIR)client.c
+UTILS_SRC = $(SRC_DIR)utils.c
 
 # object files
 SERVER_OBJ = $(SERVER_SRC:.c=.o)
 CLIENT_OBJ = $(CLIENT_SRC:.c=.o)
+UTILS_OBJ = $(UTILS_SRC:.c=.o)
 
 # libft
 LIBFT = $(LIBFT_DIR)libft.a
@@ -33,11 +35,11 @@ $(LIBFT):
 
 # build server
 $(SERVER): $(SERVER_OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(SERVER_OBJ) $(LIBFT) -o $(SERVER)
+	$(CC) $(CFLAGS) $(SERVER_OBJ) $(UTILS_SRC) $(LIBFT) -o $(SERVER)
 
 # build client
 $(CLIENT): $(CLIENT_OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(CLIENT_OBJ) $(LIBFT) -o $(CLIENT)
+	$(CC) $(CFLAGS) $(CLIENT_OBJ) $(UTILS_SRC) $(LIBFT) -o $(CLIENT)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

@@ -7,4 +7,6 @@
 # include <stdlib.h>
 # include "../src/libft/libft.h"
 
+void    ft_error(int n);
+
 #endif
