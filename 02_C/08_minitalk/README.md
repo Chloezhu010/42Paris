@@ -17,10 +17,12 @@
 - Role of server
     - run & listen for signals
     - process of decoding the bits into signal
+    - send acknowledgement after receiving each bit
 - Role of client
     - take a server PID and a message
     - send the message via signals
     - process of encoding the signal into bits
+    - wait for the acknowledgement before sending the next bit
 # File structure
 ```
 minitalk/
