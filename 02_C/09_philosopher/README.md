@@ -43,13 +43,27 @@
   - https://github.com/mcombeau/philosophers
 
 # Key concept
-- thread vs process
+- What's thread
+  - a thread is a basic unit of CPU utilization
+  - componenet: a thread ID, a program counter, a register set, and a stack
+- **thread vs process**
   - process: 1 process can contain multiple threads
   - address space: process when forking, parent and child have separate variables, which can both be modified individually. While threads are sharing memroy.
-- race condition
-- mutex
-
-
+- **race condition**
+  - A race condition in C (or any multithreaded/multiprocess program) occurs when multiple threads or processes access and modify shared data concurrently, leading to unpredictable behavior.
+  - How It Happens
+    - Multiple threads/processes access shared data simultaneously.
+    - Execution order is unpredictable due to scheduling by the operating system.
+    - Final result depends on timing, causing unexpected or inconsistent behavior.
+- **mutex**
+  - short for mutual exclusion, mutex is a synchronization mechanism used in multithreaded programming to prevent race conditions by ensuring that only one thread can access a shared resource at a time.
+  - How it works
+    - A mutex lock is placed before accessing a shared resource.
+    - When a thread locks the mutex, other threads must wait until it is unlocked.
+    - After finishing the operation, the thread unlocks the mutex, allowing others to proceed.
+- parallelism vs concurrency
+  - parallelism: execute multiple tasks simultaneously, typically on multiple processors or cores. In parallelism, tasks are literally running at the same time in different computational resources.
+  - concurrency: the ability of a system to handle multiple tasks at once, but not necessarily at the same exact time. It allows tasks to be in progress at the same time (often through context switching), but only one task is executing at any given moment.
 
 # Modules
 

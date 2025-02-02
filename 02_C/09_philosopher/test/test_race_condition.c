@@ -1,23 +1,40 @@
 #include "../incl/philo.h"
 
+int mails = 0;
+pthread_mutex_t mutex;
+
 void    *routine()
 {
-    
+    for (int i = 0; i < 1000000; i++)
+    {
+        // protect the thread from race condition
+        pthread_mutex_lock(&mutex);
+        mails++;
+        pthread_mutex_unlock(&mutex);
+    }
     return (NULL);
 }
 
 int main()
 {
-    pthread_t   t1;
-    pthread_t   t2;
+    pthread_t   th[4];
+    int i;
+    
+    // initialize the mutex
+    pthread_mutex_init(&mutex, NULL);
+    for (i = 0; i < 4; i++)
+    {
+        pthread_create(&th[i], NULL, &routine, NULL);
+        printf("thread %d has started\n", i);
+    }
+    for (i = 0; i < 4; i++)
+    {
+        pthread_join(th[i], NULL);
+        printf("thread %d has executed\n", i);
+    }
 
-    // initialize
-    // if success, return 0, otherwise return != 0
-    pthread_create(&t1, NULL, &routine, NULL);
-    pthread_create(&t2, NULL, &routine, NULL);
-    // ask the main thread to wait until the subthreads finish their execution
-    // use pthread_join to synchronize
-    pthread_join(t1, NULL);
-    pthread_join(t2, NULL);
+    // destroy mutex at the end
+    pthread_mutex_destroy(&mutex);
+    printf("# of mails: %d\n", mails);
     return (0);
 }
