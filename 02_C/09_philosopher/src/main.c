@@ -4,11 +4,8 @@ int main(int ac, char **av)
 {
     t_data  data;
 
-    // parse command-line arg
-    data = parse_argument(ac, av);
-    
     // initialize shared data (forks, philo states etc.)
-
+    initialization(&data, ac, av);
     // create philo threads
 
     // monitor the simulation (check for philo death or completion)

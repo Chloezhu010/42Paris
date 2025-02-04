@@ -66,7 +66,23 @@
 - parallelism vs concurrency
   - parallelism: execute multiple tasks simultaneously, typically on multiple processors or cores. In parallelism, tasks are literally running at the same time in different computational resources.
   - concurrency: the ability of a system to handle multiple tasks at once, but not necessarily at the same exact time. It allows tasks to be in progress at the same time (often through context switching), but only one task is executing at any given moment.
-
+# File structure
+```markdown
+philosopher/
+├── incl/
+│   └── philo.h
+├── src/
+│   ├── parse_argument.c
+│   ├── time.c
+│   ├── log_msg.c
+│   ├── init.c
+│   ├── philo.c
+│   ├── fork.c
+│   ├── cleanup.c
+│   ├── utils.c
+│   └── main.c
+└── Makefile
+```
 # Modules
 - Main module
   - argument parsing

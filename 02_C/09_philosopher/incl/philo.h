@@ -52,17 +52,30 @@ void    sleep_for(long milliseconds);
 void    log_message(t_philosopher *philo, const char *message);
 
 /* Initialization */
+void    init_mutex(t_data *data);
+void    init_philo(t_data *data);
+void    init_time(t_data *data);
+void    init_threads(t_data *data);
+void    initialization(t_data *data, int ac, char **av);
 
-/* Philosopher module */
+/* Philo module */
+void    *philo_routine(void *arg);
+void    eat(t_philosopher *philo);
+void    think(t_philosopher *philo);
+void    sleep_philo(t_philosopher *philo);
 
 
 /* Fork module */
-
+void    pick_fork(t_philosopher *philo);
+void    drop_fork(t_philosopher *philo);
 
 /* Cleanup module */
+void    cleanup_mutex(t_data *data, int fork_initialized);
+void    cleanup_thread(t_data *data, int thread_created);
+void    cleanup_philo(t_data *data);
 
 /* utils */
-
-
+void    exit_with_error(char *message);
+int	ft_atoi(const char *nptr);
 
 #endif
