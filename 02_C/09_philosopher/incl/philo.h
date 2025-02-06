@@ -6,76 +6,65 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-/*
-    state & behavior of a single philo
-*/
-typedef struct s_philosopher
+typedef struct s_philo
 {
+    pthread_t thread;
     int id;
+    int eating;
     int meals_eaten;
-    long    last_meal_time;
-    pthread_t   thread;
-    pthread_mutex_t *left_fork;
+    size_t last_meal;
+    size_t time_to_die;
+    size_t time_to_eat;
+    size_t time_to_sleep;
+    size_t start_time;
+    int num_philo;
+    int num_times_to_eat;
+    int *dead;
     pthread_mutex_t *right_fork;
-    struct s_data   *data;
-}   t_philosopher;
+    pthread_mutex_t *left_fork;
+    pthread_mutex_t *write_lock;
+    pthread_mutex_t *dead_lock;
+    pthread_mutex_t *meal_lock;
+}   t_philo;
 
-/*
-    global data: shared by all philosophers and the main program
-        - initialize once at the start of the program
-        - shared among all philos
-        - each fork is a mutex that philo must lock to eat
-        - log_mutex ensure log msg from different threads don't overlap
-*/
-typedef struct  s_data
+typedef struct  s_program
 {
-    int num_philosophers;
-    int time_to_die;
-    int time_to_eat;
-    int time_to_sleep;
-    int num_meals;
-    long    start_time;
-    pthread_mutex_t *fork;
-    pthread_mutex_t log_mutex;
-    t_philosopher   *philosophers;
-    int simulation_running;
-}   t_data;
+    int dead_flag;
+    pthread_mutex_t dead_lock;
+    pthread_mutex_t meal_lock;
+    pthread_mutex_t write_lock;
+    t_philo *philo;
+}   t_program;
 
-/* Argument parsing */
-t_data  parse_argument(int ac, char **av);
+/* main */
 
-/* Time module */
-long    get_current_time();
-void    sleep_for(long milliseconds);
+/* init */
+void    init_input(t_philo *philo, char **av);
+void    init_philo(t_philo *philo, t_program *program, pthread_mutex_t *fork, char **av);
+void    init_fork(pthread_mutex_t *fork, int philo_num);
+void    init_program(t_program *program, t_philo *philo);
 
-/* Logging module */
-void    log_message(t_philosopher *philo, const char *message);
-
-/* Initialization */
-void    init_mutex(t_data *data);
-void    init_philo(t_data *data);
-void    init_time(t_data *data);
-void    init_threads(t_data *data);
-void    initialization(t_data *data, int ac, char **av);
-
-/* Philo module */
+/* thread */
+int dead_loop(t_philo *philo);
 void    *philo_routine(void *arg);
-void    eat(t_philosopher *philo);
-void    think(t_philosopher *philo);
-void    sleep_philo(t_philosopher *philo);
+int create_thread(t_program *program, pthread_mutex_t *fork);
+void	print_message(t_philo *philo, char *str, int id);
 
+/* philo routine */
+void    think(t_philo *philo);
+void    sleep_philo(t_philo *philo);
+void    eat(t_philo *philo);
 
-/* Fork module */
-void    pick_fork(t_philosopher *philo);
-void    drop_fork(t_philosopher *philo);
-
-/* Cleanup module */
-void    cleanup_mutex(t_data *data, int fork_initialized);
-void    cleanup_thread(t_data *data, int thread_created);
-void    cleanup_philo(t_data *data);
+/* monitor */
+int philo_dead(t_philo *philo, size_t time_to_die);
+int check_dead(t_philo *philo);
+int check_all_eat(t_philo *philo);
+void    *monitor(void *arg);
 
 /* utils */
-void    exit_with_error(char *message);
 int	ft_atoi(const char *nptr);
+size_t    get_current_time();
+int	ft_usleep(size_t ms);
+void	destory_all(t_program *program, pthread_mutex_t *fork, char *str);
 
 #endif

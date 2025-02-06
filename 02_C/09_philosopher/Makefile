@@ -7,14 +7,11 @@ CFLAGS = -Wall -Wextra -Werror
 
 # main src files
 SRC_DIR = src
-SRC = $(SRC_DIR)/main_test_philo.c \
-		$(SRC_DIR)/parse_arg.c \
-		$(SRC_DIR)/time.c \
-		$(SRC_DIR)/log_msg.c \
+SRC = $(SRC_DIR)/main.c \
 		$(SRC_DIR)/init.c \
-		$(SRC_DIR)/philo.c \
-		$(SRC_DIR)/fork.c \
-		$(SRC_DIR)/cleanup.c \
+		$(SRC_DIR)/thread.c \
+		$(SRC_DIR)/philo_routine.c \
+		$(SRC_DIR)/monitor.c \
 		$(SRC_DIR)/utils.c
 OBJ = $(SRC:.c=.o)
 
