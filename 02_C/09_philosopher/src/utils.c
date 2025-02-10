@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: czhu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/08 16:16:06 by czhu              #+#    #+#             */
+/*   Updated: 2025/02/08 16:23:13 by czhu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incl/philo.h"
 
 /* convert str to int */
@@ -34,35 +46,35 @@ int	ft_atoi(const char *nptr)
            time_t       tv_sec;   // Seconds
            suseconds_t  tv_usec;  // Microseconds
 */
-size_t    get_current_time()
+size_t	get_current_time(void)
 {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    return (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
 /* improved version of usleep function */
 int	ft_usleep(size_t ms)
 {
-	size_t start;
+	size_t	start;
 
 	start = get_current_time();
-	if (get_current_time() - start < ms)
+	while (get_current_time() - start < ms)
 		usleep(500);
 	return (0);
 }
 
 /* destroy all mutex */
-void	destory_all(t_program *program, pthread_mutex_t *fork, char *str)
+void	destory_all(t_program *program, pthread_mutex_t *fork)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	printf("%s\n", str);
 	pthread_mutex_destroy(&program->dead_lock);
 	pthread_mutex_destroy(&program->meal_lock);
 	pthread_mutex_destroy(&program->write_lock);
-	while (i < program->philo->num_philo)
+	while (i < program->philo[0].num_philo)
 	{
 		pthread_mutex_destroy(&fork[i]);
 		i++;
