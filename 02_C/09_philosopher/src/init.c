@@ -38,17 +38,17 @@ void	init_philo(t_philo *philo, t_program *program,
 		philo[i].eating = 0;
 		philo[i].meals_eaten = 0;
 		init_input(&philo[i], av);
-		philo[i].last_meal = get_current_time();
-		philo[i].start_time = get_current_time();
+		philo[i].last_meal = program->start_time;
+		philo[i].start_time = program->start_time;
 		philo[i].dead = &program->dead_flag;
 		philo[i].write_lock = &program->write_lock;
 		philo[i].dead_lock = &program->dead_lock;
 		philo[i].meal_lock = &program->meal_lock;
 		philo[i].left_fork = &fork[i];
-		if (i == 0)
-			philo[i].right_fork = &fork[philo[i].num_philo - 1];
+		if (i == philo[i].num_philo - 1)
+			philo[i].right_fork = &fork[0];
 		else
-			philo[i].right_fork = &fork[i - 1];
+			philo[i].right_fork = &fork[i + 1];
 		i++;
 	}
 }
@@ -71,6 +71,7 @@ void	init_program(t_program *program, t_philo *philo)
 {
 	program->dead_flag = 0;
 	program->philo = philo;
+	program->start_time = get_current_time();
 	pthread_mutex_init(&program->write_lock, NULL);
 	pthread_mutex_init(&program->dead_lock, NULL);
 	pthread_mutex_init(&program->meal_lock, NULL);

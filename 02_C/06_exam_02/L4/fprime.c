@@ -18,7 +18,7 @@ void	fprime(int nb)
 		{
 			printf("%d", i);
 			nb = nb / i;
-			if (nb > 1)
+			//if (nb > 1)
 				printf("*");
 		}
 		i++;
