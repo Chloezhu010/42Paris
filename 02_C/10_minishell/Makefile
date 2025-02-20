@@ -9,7 +9,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRC_DIR = src
 EXEC_DIR = $(SRC_DIR)/execution
 BUILTIN_DIR = $(SRC_DIR)/builtin
-SRC = $(BUILTIN_DIR)/builtin.c
+SRC = $(BUILTIN_DIR)/ft_exit.c
 
 OBJ = $(SRC:.c=.o)
 

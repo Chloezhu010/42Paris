@@ -12,56 +12,53 @@
 
 #include "../incl/builtin.h"
 
-/* change working dir
-    - if no args provide
-        - print error msg, return 1
-    - 
-*/
-int ft_cd(char **args)
+/* check if a string is a valid numeric arg */
+int	is_digit(char *str)
 {
+	int	i;
 
-}
-
-// int ft_echo(char **args)
-// {
-
-// }
-
-/* print the current dir
-	- ignore args
-	- if getcwd(path, size) works
-        - print the current working dir path
-	    - return 0
-    - else
-		- print error msg & return 1
-*/
-int ft_pwd(char **args)
-{
-	char	cwd[1024];
-
-	(void)args;
-    if (getcwd(cwd, sizeof(cwd)))
-	{
-		ft_printf("%s\n", cwd);
+	i = 0;
+	if (!str)
 		return (0);
-	}
-	else
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i])
 	{
-		perror("pwd");
-		return (1);
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
 	}
+	return (1);
 }
 
-// === testing pwd ===
-int main(void)
+/* exit with no option
+	requirement
+	- need to exit with numeric arg or no arg
+	- take only 1 arg
+		- 0: success
+		- non zero: error
+*/
+void ft_exit(char **args)
 {
-    char *args1[] = {NULL};
-    ft_pwd(args1);
+	int	exit_status;
 
-    char *args2[] = {"pwd", "arg1", "arg2", NULL};
-    ft_pwd(args2);
-
-    chdir("..");
-    char *args3[] = {"pwd", "arg1", "arg2", NULL};
-    ft_pwd(args3);
+	exit_status = 0;
+	if (args[1] != NULL && args[2] != NULL)
+		printf("exit: too many arguments\n");
+	if (args[1] != NULL)
+	{
+		if (is_digit(args[1]) == 0)
+		{
+			printf("exit: numeric argument is needed\n");
+			exit_status = 2;
+		}
+		exit_status = ft_atoi(args[1]);
+	}
+	exit(exit_status);
+}
+// === testing exit ===
+int main(int ac, char **av)
+{
+	(void)ac;
+	ft_exit(av);
 }
