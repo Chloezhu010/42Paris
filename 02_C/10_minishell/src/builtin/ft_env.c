@@ -12,35 +12,6 @@
 
 #include "../incl/builtin.h"
 
-/* printout the env variables */
-void	print_env(t_env *env)
-{
-	int	i;
-
-	i = 0;
-	while (env && env->env_var && env->env_var[i])
-	{
-		ft_printf("%s\n", env->env_var[i]);
-		i++;
-	}
-}
-
-/* free malloc for env */
-void	free_env(t_env *env)
-{
-	int	i;
-
-	i = 0;
-	if (!env || !env->env_var)
-		return ;
-	while (env->env_var[i])
-	{
-		free(env->env_var[i]);
-		i++;
-	}
-	free(env->env_var);
-}
-
 /* env with no option
     env request
     - print out the env info

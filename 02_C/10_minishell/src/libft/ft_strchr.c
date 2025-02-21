@@ -29,8 +29,8 @@ char	*ft_strchr(const char *s, int c)
 #include <string.h>
 int	main()
 {
-	const char str[] = "";
-	char *ptr = ft_strchr(str, ' ');
+	const char str[] = "key=value";
+	char *ptr = ft_strchr(str, '=');
 
 	if (ptr != NULL)
 		printf("first occurrence: %s\n", ptr);
