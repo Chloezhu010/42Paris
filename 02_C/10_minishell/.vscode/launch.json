@@ -7,9 +7,10 @@
       {
         "type": "lldb",
         "request": "launch",
-        "name": "Debug",
+        "name": "Debug minishell",
         "program": "${workspaceFolder}/minishell",
         "args": [],
+        "env": {}, 
         "cwd": "${workspaceFolder}"
       }
     ]

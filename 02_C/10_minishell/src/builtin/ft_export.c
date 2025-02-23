@@ -8,7 +8,7 @@
         - if invalid, return 0
     - else, return 1 as valid
 */
-int is_valid_name(char *key)
+int check_valid_name(char *key)
 {
     int i;
     
@@ -113,11 +113,11 @@ void ft_export(char **args, t_env *env, char **envp)
 //     printf("%d\n", is_valid_name(av[1]));
 // }
 
-// === test ft_export ===
-int main(int ac, char **av, char **envp)
-{
-    t_env env;
+// // === test ft_export ===
+// int main(int ac, char **av, char **envp)
+// {
+//     t_env env;
     
-    (void)ac;
-    ft_export(av, &env, envp);
-}
+//     (void)ac;
+//     ft_export(av, &env, envp);
+// }

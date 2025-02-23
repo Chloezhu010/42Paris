@@ -18,9 +18,10 @@
     env implementation
     - wrap the init, print, free functions
 */
-void	ft_env(t_env *env, char **envp)
+void	ft_env(char **args, t_env *env, char **envp)
 {
-	if (!envp || !env)
+	(void)args;
+    if (!envp || !env)
 		return ;
 	init_env(env, envp);
 	print_env(env);

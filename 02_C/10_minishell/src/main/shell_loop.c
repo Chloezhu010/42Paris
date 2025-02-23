@@ -1,6 +1,18 @@
 #include "../incl/minishell.h"
 
+/* global variables */
 int status = 0;
+t_builtin g_builtin[] = 
+{
+    {"pwd", ft_pwd},
+    {"cd", ft_cd},
+    {"echo", ft_echo},
+    {"env", ft_env},
+    {"exit", ft_exit},
+    {"export", ft_export},
+    {"unset", ft_unset},
+    {NULL, NULL}
+};
 
 /* read the input from user
     - print the cwd before $>
@@ -17,19 +29,21 @@ char *read_line(void)
         perror("getcwd");
     printf("%s $>", cwd);
 
-    if (getline(&buf, &bufsize, stdin) == -1) // TODO replace getline
+    if (getline(&buf, &bufsize, stdin) == -1)
     {
         free(buf);
         buf = NULL;
-        if (feof(stdin)) // when enter ctl+D, TODO replace feof
-            printf("EOF"); 
+        if (feof(stdin)) // when enter ctl+D
+            return (NULL);
         else
             printf("getline failed");
     }
     return (buf);
 }
 
-/* tokenize the input line */
+/* tokenize the input line
+    - parse the args
+*/
 char    **cell_split_line(char *line)
 {
     char            **tokens;
@@ -67,21 +81,36 @@ void launch_execution(char **args)
 }
 
 /* execute shell
+    - init the env variables
     - if it's build in function, call it
     - if not, launch external programs
 */
-void execute_shell(char **args)
+void execute_shell(char **args, t_env *env, char **envp)
 {
-    // TODO builtin functions
-    if (strcmp(args[0], "pwd") == 0)
-    {
-        ft_pwd(args);
+    int i;
+
+    // input control
+    if (!args[0])
         return ;
+    // init env var
+    if (!env->env_var)
+        init_env(env, envp);
+    // if builtin functions
+    i = 0;
+    while (g_builtin[i].builtin_name)
+    {
+        if (strcmp(args[0], g_builtin[i].builtin_name) == 0) // TODO replace strcmp
+        {
+            g_builtin[i].func(args, env, envp);
+            return ;
+        }
+        i++;
     }
+    // if not, launch external programs
     launch_execution(args);
 }
 
-int main()
+void shell_loop(t_env *env, char **envp)
 {
     char *line;
     char **args;
@@ -91,24 +120,24 @@ int main()
         // 1. handle signal
         // 2. read line from command
         line = read_line();
-            // check the read_line function
         if (line == NULL)
         {
             printf("\nexit\n");
             break;
         }
-        printf("you entered: %s\n", line);
+        // check the read_line function
+        // printf("you entered: %s\n", line);
         // 3. parse the args
         args = cell_split_line(line);
-            // check if the args are tokenized
-        int i = 0;
-        while (args[i])
-        {
-            printf("token[%d]: %s\n", i, args[i]);
-            i++;
-        }
+        // check if the args are tokenized
+        // int i = 0;
+        // while (args[i])
+        // {
+        //     printf("token[%d]: %s\n", i, args[i]);
+        //     i++;
+        // }
         // 4. execute the command
-        execute_shell(args);
+        execute_shell(args, env, envp);
         // 5. add history
 
 
@@ -116,4 +145,14 @@ int main()
         free(line);
         free(args);
     }
+}
+
+int main(int ac, char **av, char **envp)
+{    
+    t_env env;
+    
+    (void)ac;
+    (void)av;
+    shell_loop(&env, envp);
+    return (0);
 }

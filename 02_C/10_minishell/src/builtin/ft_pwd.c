@@ -20,11 +20,13 @@
     - else
 		- print error msg & return 1
 */
-void	ft_pwd(char **args)
+void	ft_pwd(char **args, t_env *env, char **envp)
 {
 	char	cwd[1024];
 
 	(void)args;
+	(void)env;
+	(void)envp;
 	if (getcwd(cwd, sizeof(cwd)))
 		printf("%s\n", cwd);
 	else

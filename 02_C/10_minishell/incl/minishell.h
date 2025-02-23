@@ -23,8 +23,8 @@
 /* shell loop utils */
 void    *Malloc(size_t size);
 void    *Realloc(void *ptr, size_t size);
-pid_t   Fork(void);
 void    Execvp(const char *file, char *const av[]);
+pid_t   Fork(void);
 pid_t   Wait(int *status);
 
 #endif

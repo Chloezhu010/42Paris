@@ -38,10 +38,12 @@ int	is_digit(char *str)
 		- 0: success
 		- non zero: error
 */
-void ft_exit(char **args)
+void ft_exit(char **args, t_env *env, char **envp)
 {
 	int	exit_status;
 
+	(void)env;
+	(void)envp;
 	exit_status = 0;
 	if (args[1] != NULL && args[2] != NULL)
 		printf("exit: too many arguments\n");
@@ -57,8 +59,8 @@ void ft_exit(char **args)
 	exit(exit_status);
 }
 // === testing exit ===
-int main(int ac, char **av)
-{
-	(void)ac;
-	ft_exit(av);
-}
+// int main(int ac, char **av)
+// {
+// 	(void)ac;
+// 	ft_exit(av);
+// }
