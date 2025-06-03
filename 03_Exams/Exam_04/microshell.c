@@ -78,11 +78,10 @@ int main(int ac, char **av, char **envp)
             if (strcmp(*av, "cd") == 0)
             {
                 status = cd(av, i);
-
-                // print out current dir
-                char cwd[1024];
-                getcwd(cwd, sizeof(cwd));
-                printf("microshell cmd: %s\n", cwd);
+                // // print out current dir
+                // char cwd[1024];
+                // getcwd(cwd, sizeof(cwd));
+                // printf("microshell cmd: %s\n", cwd);
             }
             // handle regular cmd
             else if (i)
@@ -91,7 +90,3 @@ int main(int ac, char **av, char **envp)
     }
     return (status);
 }
-
-/* testing cmd
-    - 
-*/
