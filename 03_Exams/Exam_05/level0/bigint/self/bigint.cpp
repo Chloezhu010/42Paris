@@ -87,6 +87,141 @@ bigint bigint::operator+(const bigint& other) const {
 }
 
 //================================
+// Increment Operators
+//================================
+
+/* prefix increment: ++a
+    - increment this bigint by 1 and return the modified object
+*/
+bigint& bigint::operator++() {
+    *this += bigint(1);
+    return *this;
+}
+
+/* postfix increment: a++
+    - increment this bigint by 1 but return the original object
+*/
+bigint bigint::operator++(int){
+    bigint original(*this); // copy original value
+    *this += bigint(1);
+    return original; // return original value
+}
+
+//================================
+// Comparison Operators
+//================================
+
+bool bigint::operator==(const bigint& other) const {
+    return value == other.value;
+}
+
+bool bigint::operator!=(const bigint& other) const {
+    return !(*this == other);
+}
+
+bool bigint::operator<(const bigint& other) const {
+    // if different length, shorter is smaller
+    if (value.size() != other.value.size()){
+        return value.size() < other.value.size();
+    }
+    // same length, compare digit by digit from the right
+    for (int i = value.size() - 1; i >= 0; i--){
+        if (value[i] != other.value[i]){
+            return value[i] < other.value[i];
+        }
+    }
+    // all digits are the same
+    return false;
+}
+
+bool bigint::operator>(const bigint& other) const {
+    // euqal case
+    if (*this == other)
+        return false;
+    // not equal case
+    return !(*this < other);
+}
+
+bool bigint::operator<=(const bigint& other) const {
+    return !(*this > other);
+}
+
+bool bigint::operator>=(const bigint& other) const {
+    return !(*this < other);
+}
+
+//================================
+// Shift Operators
+//================================
+
+/* modify this value */
+bigint& bigint::operator<<=(unsigned int shift) {
+    // special case 0 << n = 0
+    if (value == "0")
+        return *this;
+    // add '0's at the beginning
+    value.insert(0, shift, '0'); // pos, number of '0', char '0'
+    return *this;
+}
+
+bigint bigint::operator<<(unsigned int shift) const {
+    bigint result(*this);
+    result <<= shift;
+    return result;
+}
+
+bigint& bigint::operator>>=(unsigned int shift) {
+    // if shift >= size, result is 0, eg. 123 >> 3
+    if (shift >= value.size())
+        value = "0";
+    else { // remove the first n chars
+        value.erase(0, shift); // pos, number of chars to erase
+    }
+    remove_leading_zero();
+    return *this;
+}
+
+bigint bigint::operator>>(unsigned int shift) const{
+    bigint result(*this);
+    result >>= shift;
+    return result;
+}
+
+//================================
+// Substraction Operators
+//================================
+
+bigint& bigint::operator-=(const bigint& other) {
+    // avoid negative result
+    if (*this <= other) {
+        value = "0";
+        return *this;
+    }
+    int borrow = 0; // hold the borrow when digit_a < digit_b
+    // subtract digit by digit
+    for (size_t i = 0; i < value.size(); i++){
+        int digit_a = value[i] - '0';
+        int digit_b = (i < other.value.size()) ? (other.value[i] - '0') : 0;
+        // perform subtraction with borrow
+        int diff = digit_a - digit_b - borrow;
+        if (diff < 0){
+            diff += 10; // borrow from next digit
+            borrow = 1; // set borrow for next iteration
+        } else
+            borrow = 0;
+        value[i] = diff + '0';
+    }
+    remove_leading_zero();
+    return *this;
+}
+
+bigint bigint::operator-(const bigint& other) const {        
+    bigint result(*this);
+    result -= other;
+    return result;
+}
+
+//================================
 // Getters 
 //================================
 

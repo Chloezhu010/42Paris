@@ -19,9 +19,28 @@ class bigint
         // destructor
         ~bigint();
 
-        // addition operator
-        bigint operator+(const bigint& other) const;
+        // addition operators
         bigint& operator+=(const bigint& other);
+        bigint operator+(const bigint& other) const;
+        // increment operators
+        bigint& operator++(); // prefix
+        bigint operator++(int); // postfix
+        // comparison operators
+        bool operator==(const bigint& other) const;
+        bool operator!=(const bigint& other) const;
+        bool operator<(const bigint& other) const;
+        bool operator>(const bigint& other) const;
+        bool operator<=(const bigint& other) const;
+        bool operator>=(const bigint& other) const;
+        // shift operators
+        bigint& operator<<=(unsigned int shift);
+        bigint& operator>>=(unsigned int shift);
+        bigint operator<<(unsigned int shift) const;
+        bigint operator>>(unsigned int shift) const;
+
+        // subtraction operators
+        bigint& operator-=(const bigint& other);
+        bigint operator-(const bigint& other) const;        
         
         // helpers
         void remove_leading_zero();

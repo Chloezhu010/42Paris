@@ -153,3 +153,15 @@ Problem Overview
                                                         // Returns a copy
                                                         // const function (doesn't modify)
         ```
+- Diff between ++b and b++
+    - Code behavior
+        ```cpp
+        int b = 5;
+
+        int x = ++b;  // Pre: b becomes 6, then x = 6
+                        // Result: b = 6, x = 6
+
+        int b = 5;
+        int y = b++;  // Post: y = 5 (old value), then b becomes 6
+                        // Result: b = 6, y = 5
+        ```
