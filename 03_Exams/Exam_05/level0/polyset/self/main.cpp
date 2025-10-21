@@ -10,6 +10,7 @@ int main(int ac, char **av)
 {
     if(ac == 1)
         return 1;
+    // test searchable_tree_bag and searchable_array_bag
     searchable_bag *t = new searchable_tree_bag;
     searchable_bag *a = new searchable_array_bag;
     for (int i = 1; i < ac; i++)
@@ -32,22 +33,31 @@ int main(int ac, char **av)
     t->clear();
     a->clear();
 
+    // test set with searchable_tree_bag and searchable_array_bag
+    const searchable_array_bag tmp(static_cast<searchable_array_bag &>(*a));
+    std::cout << "print results: " << std::endl;
+    tmp.print();
+    tmp.has(1);
+    set sa(*a);
+    set st(*a);
 
-    // const searchable_array_bag tmp(static_cast<searchable_array_bag &>(*a));
-    // tmp.print();
-    // tmp.has(1);
-    // set sa(*a);
-    // set st(*a);
-    // for(int i = 1; i < ac; i++)
-    // {
-    //     st.insert(atoi(av[i]));
-    //     sa.insert(atoi(av[i]));
-    // }
-    // sa.has(atoi(av[1]));
-    // sa.print();
-    // sa.get_bag().print();
-    // st.print();
-    // sa.clear();
-    // int arr[] = {1, 2, 3, 4,};
-    // sa.insert(arr, 4);
+    // loop through the input, convert them into int, then insert into the sets
+    for(int i = 1; i < ac; i++)
+    {
+        st.insert(atoi(av[i]));
+        sa.insert(atoi(av[i]));
+    }
+    // check if the 1st argument is in the array-based set
+    sa.has(atoi(av[1]));
+    // print the sets and their underlying bags
+    sa.print();
+    sa.get_bag().print();
+    st.print();
+    // clear the array-based set
+    sa.clear();
+
+    // insert a predefined array into the array-based set
+    int arr[] = {1, 2, 3, 4,};
+    sa.insert(arr, 4);
+    sa.print();
 }
