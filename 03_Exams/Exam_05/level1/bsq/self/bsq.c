@@ -119,14 +119,22 @@ Map *bsq_resolver(Map *map) {
             else if (i == 0 || j == 0)
                 dp[i][j] = 1;
             // apply recurrence relation
-            else
+            else if (i > 0 && j > 0)
                 dp[i][j] = min3(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1;
             // track max_size
             // not >= here, only top-most, left-most qualifies
-            if (dp[i][j] > max_size) {
+            if (dp[i][j] > max_size && (i == 0 || j == 0)) {
                 max_size = dp[i][j];
                 best_i = i;
                 best_j = j;
+            }
+            if (dp[i][j] > max_size && i > 0 && j > 0
+                && dp[i - 1][j] == dp[i][j] - 1
+                && dp[i][j - 1] == dp[i][j] - 1
+                && dp[i - 1][j - 1] == dp[i][j] - 1) {
+                    max_size = dp[i][j];
+                    best_i = i;
+                    best_j = j;
             }
         }
     }
